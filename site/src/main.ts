@@ -1,4 +1,7 @@
 import './styles/main.scss'
+import './styles/styles.scss'
+import './components/sc-header'
+import './components/sc-hero'
 import './components/sc-button'
 import './components/sc-accordion'
 import './components/sc-badge'

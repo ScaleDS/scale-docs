@@ -14,9 +14,14 @@
 
 /* ---- Body ---- */
 
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: var(--sc-type-family-inter), system-ui, sans-serif;
-  background: var(--sc-color-background-primary);
+  background: var(--sc-color-surface-l0);
   color: var(--sc-color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

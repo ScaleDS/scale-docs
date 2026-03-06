@@ -45,6 +45,29 @@
   --sc-type-letter-spacing-none: 0px;
 }
 
+/* Responsive type — tablet/mobile (≤810px) */
+@media (max-width: 810px) {
+  :root {
+    --sc-type-size-10xl: var(--sc-unit-56);
+    --sc-type-size-9xl:  var(--sc-unit-48);
+    --sc-type-size-8xl:  var(--sc-unit-40);
+    --sc-type-size-7xl:  var(--sc-unit-32);
+    --sc-type-size-6xl:  var(--sc-unit-28);
+    --sc-type-size-5xl:  var(--sc-unit-24);
+    --sc-type-size-3xl:  var(--sc-unit-20);
+    --sc-type-size-2xl:  var(--sc-unit-18);
+
+    --sc-type-line-height-10xl: var(--sc-unit-64);
+    --sc-type-line-height-9xl:  var(--sc-unit-56);
+    --sc-type-line-height-8xl:  var(--sc-unit-48);
+    --sc-type-line-height-7xl:  var(--sc-unit-40);
+    --sc-type-line-height-6xl:  var(--sc-unit-36);
+    --sc-type-line-height-5xl:  var(--sc-unit-32);
+    --sc-type-line-height-3xl:  var(--sc-unit-28);
+    --sc-type-line-height-2xl:  var(--sc-unit-26);
+  }
+}
+
 /* Semantic Type - SCSS Maps */
 
 /* Headings */

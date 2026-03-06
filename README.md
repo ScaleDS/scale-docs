@@ -32,15 +32,29 @@ npm run build
 
 Output goes to `site/dist/`.
 
+## Home page
+
+`site/index.html` — the main marketing/sales page for Scale. Uses:
+
+- `sc-header` — fixed header with scroll-reactive frosted-glass background, animated pill theme toggle (light/dark), and mobile drawer
+- `sc-hero` — full-width hero with badge, heading, CTAs, and dual-image crossfade (light ↔ dark)
+- `sc-button`, `sc-button-icon`, `sc-logo`, `sc-input`, `sc-accordion` — throughout sections
+- Platform switch (Framer / Figma) — plain JS, no framework
+- Pricing cards and FAQ accordion
+
 ## Components
 
 | Component | Preview |
 |---|---|
+| `sc-header` | *(home page only)* |
+| `sc-hero` | *(home page only)* |
 | `sc-button` | `/components/sc-button.html` |
 | `sc-input` | `/components/sc-input.html` |
 | `sc-toggle` | `/components/sc-toggle.html` |
 | `sc-badge` | `/components/sc-badge.html` |
 | `sc-accordion` | `/components/sc-accordion.html` |
+| `sc-button-icon` | *(no standalone preview)* |
+| `sc-logo` | *(no standalone preview)* |
 
 ## Tech
 

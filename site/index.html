@@ -3,15 +3,315 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scale</title>
+    <title>Scale — Design System for Figma &amp; Framer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <sc-button type="primary">Buy now</sc-button>
-    <sc-button type="secondary">Preview</sc-button>
+
+    <!-- ============================================================ -->
+    <!-- Header                                                        -->
+    <!-- ============================================================ -->
+    <sc-header
+      nav-links='[{"label":"Features","href":"#features"},{"label":"Pricing","href":"#pricing"},{"label":"FAQ","href":"#faq"}]'
+      primary-label="Buy now"
+    ></sc-header>
+
+    <!-- ============================================================ -->
+    <!-- Hero                                                          -->
+    <!-- ============================================================ -->
+    <sc-hero
+      badge="3.1"
+      heading="A Design System that helps individuals and organisations Scale"
+      primary-label="Preview in Figma"
+      secondary-label="Preview in Framer"
+      image-src="/src/assets/images/hero/Scale - Framer - Hero - Light.jpg"
+      image-src-dark="/src/assets/images/hero/Scale - Framer - Hero - Dark.jpg"
+      image-alt="Scale design system preview"
+    ></sc-hero>
+
+    <!-- ============================================================ -->
+    <!-- Platform switch                                               -->
+    <!-- ============================================================ -->
+    <section class="platform-switch-section">
+      <div class="platform-switch">
+        <button class="active" data-platform="framer">For Framer</button>
+        <button data-platform="figma">For Figma</button>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Framer Content                                                -->
+    <!-- ============================================================ -->
+    <section id="content-framer" class="platform-content active page-section" aria-label="Framer features">
+      <div class="section-inner" id="features">
+
+        <ul class="bento">
+          <li class="bento-card">
+            <h3>56 Components.<br>8,368 possibilities</h3>
+            <p>Web components, Properties and Variants with thousands of possibilities.</p>
+          </li>
+          <li class="bento-card">
+            <h3>120 Styles &amp; Variables</h3>
+            <p>Semantic Color and Type Styles.</p>
+          </li>
+          <li class="bento-card">
+            <h3>288 Icons</h3>
+            <p>Feather icons and custom Status Icons.</p>
+          </li>
+          <li class="bento-card">
+            <h3>15 Content Modules.<br>8,117 possibilities</h3>
+            <p>Hero, Feature, Social, Pricing, CTA and FAQ.</p>
+          </li>
+          <li class="bento-card">
+            <h3>3 Page Templates</h3>
+            <p>Ready-made pages to help you launch faster.</p>
+          </li>
+        </ul>
+
+        <ul class="features">
+          <li class="feature">
+            <h4>Global Semantic Color</h4>
+            <p>Use color in a meaningful way across your projects, toggle automatically between Light and Dark modes and watch updates ripple across every screen instantly.</p>
+          </li>
+          <li class="feature">
+            <h4>Responsive Typography</h4>
+            <p>Perfect hierarchy, zero math. Our t-shirt sized type scale uses fluid responsiveness to adapt flawlessly from Desktop to Mobile. No manual breakpoint tweaks required.</p>
+          </li>
+          <li class="feature">
+            <h4>Smart Component Library</h4>
+            <p>Don't build from scratch, just configure. Access a robust library pre-wired with variants, variables and properties. Simply drag, drop, and toggle the props to match your needs.</p>
+          </li>
+          <li class="feature">
+            <h4>Adaptive Section Blocks</h4>
+            <p>Drag-and-drop sections that instantly inherit your global theme and resize perfectly for every device. Edit the master component once, and see it update everywhere.</p>
+          </li>
+          <li class="feature">
+            <h4>Launch-Ready Templates</h4>
+            <p>Skip "blank canvas" paralysis. Start with professional page structures. Mix sections, apply your brand, and finish your site in a fraction of the time.</p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Figma Content                                                 -->
+    <!-- ============================================================ -->
+    <section id="content-figma" class="platform-content page-section" aria-label="Figma features">
+      <div class="section-inner">
+
+        <ul class="bento">
+          <li class="bento-card">
+            <h3>118 Components.<br>41,942 possibilities</h3>
+            <p>Web and App components, Properties and Variants with thousands of possibilities.</p>
+          </li>
+          <li class="bento-card">
+            <h3>720 Variables &amp; Styles</h3>
+            <p>Semantic Color and Type Variables, Spacing, Border and Elevation.</p>
+          </li>
+          <li class="bento-card">
+            <h3>936 Icons</h3>
+            <p>Feather and status icons at 16, 24, and 32px.</p>
+          </li>
+          <li class="bento-card">
+            <h3>22 Sections.<br>14,636 possibilities</h3>
+            <p>Responsive Hero, Feature, Logo, Pricing, CTA, FAQ and Carousel modules.</p>
+          </li>
+        </ul>
+
+        <ul class="features">
+          <li class="feature">
+            <h4>Liquid Glass Components</h4>
+            <p>Design for Apple's latest operating system with 14 new Liquid Glass components. Use custom icons instead of Apple's SF Symbols.</p>
+          </li>
+          <li class="feature">
+            <h4>Color Variable Picker</h4>
+            <p>Scale's first Figma plugin. Helps you find the right semantic color variable when designing. Learn Scale's semantic spec as you go.</p>
+          </li>
+          <li class="feature">
+            <h4>Global Semantic Color</h4>
+            <p>Use color in a meaningful way across your projects, toggle automatically between Light and Dark modes and watch updates ripple across every screen instantly.</p>
+          </li>
+          <li class="feature">
+            <h4>Responsive Typography</h4>
+            <p>Perfect hierarchy, zero math. Our t-shirt sized type scale uses fluid responsiveness to adapt flawlessly from Desktop to Mobile. No manual breakpoint tweaks required.</p>
+          </li>
+          <li class="feature">
+            <h4>Smart Component Library</h4>
+            <p>Don't build from scratch, just configure. Access a robust library pre-wired with variants, variables and properties. Simply drag, drop, and toggle the props to match your needs.</p>
+          </li>
+          <li class="feature">
+            <h4>Adaptive Section Blocks</h4>
+            <p>Drag-and-drop sections that instantly inherit your global theme and resize perfectly for every device. Edit the master component once, and see it update everywhere.</p>
+          </li>
+          <li class="feature">
+            <h4>Launch-Ready Templates</h4>
+            <p>Skip "blank canvas" paralysis. Start with professional page structures. Mix sections, apply your brand, and finish your site in a fraction of the time.</p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Pricing                                                       -->
+    <!-- ============================================================ -->
+    <section id="pricing" class="page-section pricing-section">
+      <div class="section-inner">
+        <header class="pricing-header">
+          <h2>Pricing</h2>
+          <p class="pricing-tagline">Pay once and get a lifetime of updates.</p>
+        </header>
+        <ul class="pricing-cards">
+
+          <li class="pricing-card">
+            <header>
+              <p class="pricing-platform">Figma</p>
+              <div class="pricing-price">
+                <span class="currency">$</span>
+                <span class="amount">49</span>
+              </div>
+              <p class="pricing-desc">The complete Scale design system for Figma.</p>
+            </header>
+            <ul class="pricing-features">
+              <li>Figma file</li>
+              <li>Lifetime updates</li>
+              <li>Unlimited projects</li>
+              <li>Semantic foundations</li>
+              <li>Component library</li>
+              <li>Section components</li>
+              <li>Page templates</li>
+              <li>Light and dark mode</li>
+            </ul>
+            <sc-button type="outline">Buy Now</sc-button>
+          </li>
+
+          <li class="pricing-card featured">
+            <header>
+              <p class="pricing-platform">Framer</p>
+              <div class="pricing-price">
+                <span class="currency">$</span>
+                <span class="amount">129</span>
+              </div>
+              <p class="pricing-desc">The complete Scale design system for Framer.</p>
+            </header>
+            <ul class="pricing-features">
+              <li>Framer file</li>
+              <li>Lifetime updates</li>
+              <li>Unlimited projects</li>
+              <li>Semantic foundations</li>
+              <li>Component library</li>
+              <li>Section components</li>
+              <li>Page templates</li>
+              <li>Light and dark mode</li>
+            </ul>
+            <sc-button type="primary">Buy Now</sc-button>
+          </li>
+
+          <li class="pricing-card">
+            <header>
+              <p class="pricing-platform">Everything</p>
+              <div class="pricing-price">
+                <span class="currency">$</span>
+                <span class="amount">149</span>
+              </div>
+              <p class="pricing-desc">Scale for both Figma and Framer, at a bundle price.</p>
+            </header>
+            <ul class="pricing-features">
+              <li>Figma and Framer files</li>
+              <li>Lifetime updates</li>
+              <li>Unlimited projects</li>
+              <li>Semantic foundations</li>
+              <li>Component library</li>
+              <li>Section components</li>
+              <li>Page templates</li>
+              <li>Light and dark mode</li>
+            </ul>
+            <sc-button type="outline">Buy Now</sc-button>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FAQ                                                           -->
+    <!-- ============================================================ -->
+    <section id="faq" class="page-section faq-section">
+      <header class="faq-header">
+        <h2>FAQ</h2>
+      </header>
+      <div class="faq-list">
+        <sc-accordion heading="Pick up a licence and help my Wife fight cancer">
+          All proceeds of Scale licence sales go towards my Wife's cancer treatment, and we need all the help we can get. It's not just a design system you're buying, you're also supporting my family so we can support her.
+        </sc-accordion>
+        <sc-accordion heading="Why Scale?">
+          Scale takes everything I've learnt from creating and contributing to design systems over the last 10 years, and brings it together in a way that keeps things simple, reduces complexity, enables theme switching through semantic tokens and does so in a direct and pragmatic way.
+        </sc-accordion>
+        <sc-accordion heading="Is dark mode really included?">
+          Yes. Other Figma design systems either don't provide a dark mode or create dark mode variants of each component. Scale allows you to switch between light and dark modes automatically with one set of components.
+        </sc-accordion>
+        <sc-accordion heading="What does lifetime updates mean?">
+          Exactly what it says. You only have to pay once and every update that Scale gets, you receive for free.
+        </sc-accordion>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Signup                                                        -->
+    <!-- ============================================================ -->
+    <section class="page-section signup-section">
+      <div class="signup-inner">
+        <h2>Stay up to date</h2>
+        <p>Stay up to date with releases and other related Scale news.</p>
+        <form class="signup-form" onsubmit="return false">
+          <sc-input id="signupEmail" label="Email address" placeholder="you@example.com"></sc-input>
+          <sc-button type="primary">Subscribe</sc-button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                        -->
+    <!-- ============================================================ -->
+    <footer class="site-footer">
+      <sc-logo size="s"></sc-logo>
+      <p class="footer-copy">©2026 Scale</p>
+      <nav class="footer-links" aria-label="Legal">
+        <a href="#">Licence Agreement</a>
+      </nav>
+    </footer>
+
+    <script>
+      // Platform switch
+      const platformBtns = document.querySelectorAll('.platform-switch button')
+      const framerContent = document.getElementById('content-framer')
+      const figmaContent = document.getElementById('content-figma')
+
+      platformBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          platformBtns.forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+          if (btn.dataset.platform === 'framer') {
+            framerContent.classList.add('active')
+            figmaContent.classList.remove('active')
+          } else {
+            figmaContent.classList.add('active')
+            framerContent.classList.remove('active')
+          }
+        })
+      })
+
+      // Hide help text on signup input
+      customElements.whenDefined('sc-input').then(() => {
+        document.querySelectorAll('.signup-section sc-input').forEach(el => {
+          el.showHelpText = false
+        })
+      })
+    </script>
+
   </body>
 </html>
-
