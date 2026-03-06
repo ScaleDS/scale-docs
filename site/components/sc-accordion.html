@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scale — Accordion Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      body { padding: 2rem; max-width: 600px; }
+    </style>
+  </head>
+  <body>
+    <h6 class="section-label">Default (all closed)</h6>
+    <sc-accordion heading="What is Scale?">
+      Scale is a design system that helps individuals and organisations build consistent, high-quality interfaces. It includes components, tokens, and templates for both Figma and Framer.
+    </sc-accordion>
+    <sc-accordion heading="Is dark mode included?">
+      Yes. Scale allows you to switch between light and dark modes automatically with one set of components. No need for separate dark mode variants.
+    </sc-accordion>
+    <sc-accordion heading="What does lifetime updates mean?">
+      Exactly what it says. You only have to pay once and every update that Scale gets, you receive for free.
+    </sc-accordion>
+
+    <h6 class="section-label">Pre-opened</h6>
+    <sc-accordion heading="Why Scale?" open>
+      Scale takes everything I've learnt from creating and contributing to design systems over the last 10 years, and brings it together in a way that keeps things simple, reduces complexity, and enables theme switching through semantic tokens.
+    </sc-accordion>
+    <sc-accordion heading="How do I get started?">
+      Purchase a licence, download the Figma or Framer file, and start building. All components come pre-wired with variants, variables, and properties.
+    </sc-accordion>
+  </body>
+</html>

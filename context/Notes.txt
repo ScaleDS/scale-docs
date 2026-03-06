@@ -1,0 +1,14 @@
+Figma Console MCP
+
+Location:
+./figma-console-mcp
+
+Run Figma:
+open -a "Figma" --args --remote-debugging-port=9222
+
+Then run Bridge Plugin.
+
+Then run in Claude:
+figma_mcp_status
+
+Figma Status Check

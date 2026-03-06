@@ -1,0 +1,1486 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "sPg01",
+      "x": 0,
+      "y": 0,
+      "name": "Scale Design System - Homepage",
+      "clip": true,
+      "width": 1440,
+      "height": 5400,
+      "fill": "#000000",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+
+        {
+          "type": "frame",
+          "id": "sNv01",
+          "name": "Navigation",
+          "width": "fill_container",
+          "padding": [20, 48],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sLg01",
+              "name": "Logo",
+              "width": 36,
+              "height": 36,
+              "fill": "#3355FF",
+              "cornerRadius": 8,
+              "layout": "none"
+            },
+            {
+              "type": "frame",
+              "id": "sDmt1",
+              "name": "Dark Mode Toggle",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 20,
+              "stroke": { "align": "inside", "thickness": 1, "fill": "#333333" },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sDmi1",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "moon",
+                  "iconFontFamily": "lucide",
+                  "fill": "#ffffff"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "frame",
+          "id": "sHr01",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [24, 80, 64, 80],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sVbg1",
+              "name": "Version Badge",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sVbt1",
+                  "fill": "#ffffff",
+                  "content": "3.0",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "sVbt2",
+                  "fill": "#3355FF",
+                  "content": "Changelog",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sHim1",
+              "name": "Hero Image",
+              "width": 1000,
+              "height": 480,
+              "fill": "#06060E",
+              "cornerRadius": 20,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sHp01",
+                  "name": "Component Preview Strip 1",
+                  "x": 80,
+                  "y": 60,
+                  "width": 840,
+                  "height": 56,
+                  "fill": "#0d0d1a",
+                  "cornerRadius": 12,
+                  "padding": [12, 16],
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sHcl1",
+                      "name": "Color Swatch 1",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#3355FF",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sHcl2",
+                      "name": "Color Swatch 2",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#e61a1a",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sHcl3",
+                      "name": "Color Swatch 3",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#009933",
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sHcl4",
+                      "name": "Color Swatch 4",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#f27f0d",
+                      "cornerRadius": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sHp02",
+                  "name": "Component Preview Strip 2",
+                  "x": 120,
+                  "y": 140,
+                  "width": 780,
+                  "height": 56,
+                  "fill": "#0d0d1a",
+                  "cornerRadius": 12,
+                  "padding": [12, 16],
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sHpt1",
+                      "fill": "#666666",
+                      "content": "Properties",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sHtg1",
+                      "name": "Toggle",
+                      "width": 40,
+                      "height": 24,
+                      "fill": "#3355FF",
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "sHpt2",
+                      "fill": "#666666",
+                      "content": "Variants",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sHp03",
+                  "name": "Component Preview Strip 3",
+                  "x": 160,
+                  "y": 220,
+                  "width": 720,
+                  "height": 56,
+                  "fill": "#0d0d1a",
+                  "cornerRadius": 12,
+                  "padding": [12, 16],
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sHpt3",
+                      "fill": "#999999",
+                      "content": "Button with Variants",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sHp04",
+                  "name": "Component Preview Strip 4",
+                  "x": 200,
+                  "y": 300,
+                  "width": 660,
+                  "height": 56,
+                  "fill": "#0d0d1a",
+                  "cornerRadius": 12,
+                  "padding": [12, 16],
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sHpt4",
+                      "fill": "#999999",
+                      "content": "Input Field Component",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sHp05",
+                  "name": "Component Preview Strip 5",
+                  "x": 240,
+                  "y": 380,
+                  "width": 600,
+                  "height": 56,
+                  "fill": "#0d0d1a",
+                  "cornerRadius": 12,
+                  "padding": [12, 16],
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sHpt5",
+                      "fill": "#999999",
+                      "content": "Card with Actions",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "sMhd1",
+              "name": "Hero Heading",
+              "width": 1000,
+              "fill": "#ffffff",
+              "content": "A Figma Design System that helps individuals and organisations Scale.",
+              "fontFamily": "Inter",
+              "fontSize": 64,
+              "fontWeight": "600",
+              "textAlign": "center",
+              "lineHeight": 1.08
+            },
+            {
+              "type": "frame",
+              "id": "sBtc1",
+              "name": "Hero Buttons",
+              "width": 440,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sBn01",
+                  "name": "Buy Now Button",
+                  "width": "fill_container",
+                  "fill": "#3355FF",
+                  "cornerRadius": 12,
+                  "padding": [18, 24],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sBt01",
+                      "fill": "#ffffff",
+                      "content": "Buy now",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sBn02",
+                  "name": "Preview Button",
+                  "width": "fill_container",
+                  "cornerRadius": 12,
+                  "stroke": { "align": "inside", "thickness": 1, "fill": "#333333" },
+                  "padding": [18, 24],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sFig1",
+                      "name": "Figma Icon",
+                      "width": 18,
+                      "height": 18,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "sFr01",
+                          "x": 0,
+                          "y": 0,
+                          "width": 8,
+                          "height": 8,
+                          "fill": "#F24E1E",
+                          "cornerRadius": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "sFr02",
+                          "x": 10,
+                          "y": 0,
+                          "width": 8,
+                          "height": 8,
+                          "fill": "#FF7262",
+                          "cornerRadius": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "sFr03",
+                          "x": 0,
+                          "y": 10,
+                          "width": 8,
+                          "height": 8,
+                          "fill": "#A259FF",
+                          "cornerRadius": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "sFr04",
+                          "x": 10,
+                          "y": 10,
+                          "width": 8,
+                          "height": 8,
+                          "fill": "#1ABCFE",
+                          "cornerRadius": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "sBt02",
+                      "fill": "#ffffff",
+                      "content": "Preview",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "frame",
+          "id": "sFti1",
+          "name": "Features Intro Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [80, 120],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "sFth1",
+              "name": "Features Heading",
+              "width": 900,
+              "fill": "#ffffff",
+              "content": "A new level of confidence and speed",
+              "fontFamily": "Inter",
+              "fontSize": 52,
+              "fontWeight": "600",
+              "textAlign": "center",
+              "lineHeight": 1.1
+            },
+            {
+              "type": "text",
+              "id": "sFtd1",
+              "name": "Features Description",
+              "width": 720,
+              "fill": "#888888",
+              "content": "Experience a new level of confidence and speed with industry-standard components and variables that help you create more consistent products, faster.",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal",
+              "textAlign": "center",
+              "lineHeight": 1.6
+            }
+          ]
+        },
+
+        {
+          "type": "frame",
+          "id": "sCmp1",
+          "name": "Components Section",
+          "width": 1280,
+          "fill": "#ffffff",
+          "cornerRadius": 24,
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [48, 48],
+          "children": [
+            {
+              "type": "frame",
+              "id": "sCmh1",
+              "name": "Components Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sCht1",
+                  "fill": "#1a1a1a",
+                  "content": "3000+ Components",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700",
+                  "lineHeight": 1.15
+                },
+                {
+                  "type": "text",
+                  "id": "sCht2",
+                  "fill": "#666666",
+                  "content": "Web and App components, Properties and Variants with thousands of possibilities.",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sCgr1",
+              "name": "Components Grid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sCrw1",
+                  "name": "Row 1 - Avatar & Controls",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sAvt1",
+                      "name": "Avatar Large",
+                      "width": 80,
+                      "height": 80,
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 40,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sAvl1",
+                          "fill": "#ffffff",
+                          "content": "AA",
+                          "fontFamily": "Inter",
+                          "fontSize": 28,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sAvg1",
+                      "name": "Avatar Group",
+                      "gap": -8,
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "sAv01",
+                          "name": "Avatar 1",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "#c9a87c",
+                          "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" }
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "sAv02",
+                          "name": "Avatar 2",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "#7cabc9",
+                          "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" }
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "sAv03",
+                          "name": "Avatar 3",
+                          "width": 36,
+                          "height": 36,
+                          "fill": "#b87cc9",
+                          "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sSpn1",
+                      "name": "Spinner",
+                      "width": 36,
+                      "height": 36,
+                      "cornerRadius": 18,
+                      "stroke": { "align": "inside", "thickness": 3, "fill": "#e5e5e5" }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sSpn2",
+                      "name": "Progress Ring",
+                      "width": 36,
+                      "height": 36,
+                      "cornerRadius": 18,
+                      "stroke": { "align": "inside", "thickness": 3, "fill": "#e61a1a" }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sSld1",
+                      "name": "Slider",
+                      "width": 280,
+                      "height": 6,
+                      "fill": "#e5e5e5",
+                      "cornerRadius": 3,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sSlf1",
+                          "name": "Slider Fill",
+                          "x": 0,
+                          "y": 0,
+                          "width": 180,
+                          "height": 6,
+                          "fill": "#3355FF",
+                          "cornerRadius": 3
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "sSlh1",
+                          "name": "Slider Handle",
+                          "x": 172,
+                          "y": -5,
+                          "width": 16,
+                          "height": 16,
+                          "fill": "#3355FF",
+                          "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sPag1",
+                      "name": "Pagination Dots",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sPd01", "width": 8, "height": 8, "fill": "#3355FF" },
+                        { "type": "ellipse", "id": "sPd02", "width": 6, "height": 6, "fill": "#cccccc" },
+                        { "type": "ellipse", "id": "sPd03", "width": 6, "height": 6, "fill": "#cccccc" },
+                        { "type": "ellipse", "id": "sPd04", "width": 6, "height": 6, "fill": "#cccccc" },
+                        { "type": "ellipse", "id": "sPd05", "width": 6, "height": 6, "fill": "#cccccc" },
+                        { "type": "ellipse", "id": "sPd06", "width": 6, "height": 6, "fill": "#cccccc" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sCrw1b",
+                  "name": "Row 1b - Avatar Stack",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sAvs1",
+                      "name": "Avatar Stack Small",
+                      "gap": -6,
+                      "children": [
+                        { "type": "ellipse", "id": "sAs01", "width": 28, "height": 28, "fill": "#d4a574", "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" } },
+                        { "type": "ellipse", "id": "sAs02", "width": 28, "height": 28, "fill": "#74a5d4", "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" } },
+                        { "type": "ellipse", "id": "sAs03", "width": 28, "height": 28, "fill": "#a574d4", "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" } },
+                        { "type": "ellipse", "id": "sAs04", "width": 28, "height": 28, "fill": "#d47474", "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" } },
+                        { "type": "ellipse", "id": "sAs05", "width": 28, "height": 28, "fill": "#74d4a5", "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" } },
+                        {
+                          "type": "frame",
+                          "id": "sAsm1",
+                          "name": "More Avatars",
+                          "width": 28,
+                          "height": 28,
+                          "fill": "#333333",
+                          "cornerRadius": 14,
+                          "stroke": { "align": "outside", "thickness": 2, "fill": "#ffffff" },
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "sAmt1",
+                              "fill": "#ffffff",
+                              "content": "+2",
+                              "fontFamily": "Inter",
+                              "fontSize": 10,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sInf1",
+                      "name": "Info Card",
+                      "width": 260,
+                      "fill": "#3355FF",
+                      "cornerRadius": 16,
+                      "layout": "vertical",
+                      "gap": 4,
+                      "padding": [20, 24],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sIfh1",
+                          "name": "Info Header",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon_font",
+                              "id": "sIfi1",
+                              "width": 18,
+                              "height": 18,
+                              "iconFontName": "info",
+                              "iconFontFamily": "lucide",
+                              "fill": "#ffffff"
+                            },
+                            {
+                              "type": "text",
+                              "id": "sIft1",
+                              "fill": "#ffffff",
+                              "content": "Heading",
+                              "fontFamily": "Inter",
+                              "fontSize": 16,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "sIft2",
+                          "fill": "#ffffffcc",
+                          "content": "Text",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sIft3",
+                          "fill": "#ffffff",
+                          "content": "Button",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sCrw2",
+                  "name": "Row 2 - Buttons",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sCbn1",
+                      "name": "Button Primary",
+                      "fill": "#3355FF",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "sCbi1",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "smile",
+                          "iconFontFamily": "lucide",
+                          "fill": "#ffffff"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sCbt1",
+                          "fill": "#ffffff",
+                          "content": "Button",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sCbn2",
+                      "name": "Button Dropdown",
+                      "stroke": { "align": "inside", "thickness": 1, "fill": "#e5e5e5" },
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sCbt2",
+                          "fill": "#1a1a1a",
+                          "content": "Button",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "sCbi2",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "chevron-down",
+                          "iconFontFamily": "lucide",
+                          "fill": "#1a1a1a"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sCbn3",
+                      "name": "Icon Button 1",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#f2f2f2",
+                      "cornerRadius": 22,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "sCbi3",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "plus",
+                          "iconFontFamily": "lucide",
+                          "fill": "#1a1a1a"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sCbn4",
+                      "name": "Icon Button 2",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "#f2f2f2",
+                      "cornerRadius": 22,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "sCbi4",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "plus",
+                          "iconFontFamily": "lucide",
+                          "fill": "#1a1a1a"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sCrw3",
+                  "name": "Row 3 - Badge Chip Breadcrumb",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sBdg1",
+                      "name": "Badge",
+                      "stroke": { "align": "inside", "thickness": 1, "fill": "#e5e5e5" },
+                      "cornerRadius": 6,
+                      "padding": [6, 12],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sBdt1",
+                          "fill": "#1a1a1a",
+                          "content": "Badge",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sChp1",
+                      "name": "Chip",
+                      "fill": "#f2f2f2",
+                      "cornerRadius": 16,
+                      "padding": [6, 12],
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "sChI1",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "smile",
+                          "iconFontFamily": "lucide",
+                          "fill": "#666666"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sCht3",
+                          "fill": "#1a1a1a",
+                          "content": "Chip",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sBrc1",
+                      "name": "Breadcrumb",
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sBr01", "fill": "#3355FF", "content": "Text", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" },
+                        { "type": "text", "id": "sBrs1", "fill": "#999999", "content": "/", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "normal" },
+                        { "type": "text", "id": "sBr02", "fill": "#3355FF", "content": "Text", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" },
+                        { "type": "text", "id": "sBrs2", "fill": "#999999", "content": "/", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "normal" },
+                        { "type": "text", "id": "sBr03", "fill": "#3355FF", "content": "Text", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" },
+                        { "type": "text", "id": "sBrs3", "fill": "#999999", "content": "/", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "normal" },
+                        { "type": "text", "id": "sBr04", "fill": "#3355FF", "content": "Text", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" },
+                        { "type": "text", "id": "sBrs4", "fill": "#999999", "content": "/", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "normal" },
+                        { "type": "text", "id": "sBr05", "fill": "#1a1a1a", "content": "Text", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sCrw4",
+                  "name": "Row 4 - Input & Search",
+                  "width": "fill_container",
+                  "gap": 32,
+                  "alignItems": "flex_start",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sInp1",
+                      "name": "Input Field",
+                      "width": 380,
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sInl1",
+                          "fill": "#1a1a1a",
+                          "content": "Label",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "sInb1",
+                          "name": "Input Box",
+                          "width": "fill_container",
+                          "fill": "#3355FF",
+                          "cornerRadius": 12,
+                          "padding": [14, 16],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "sInt1",
+                              "fill": "#ffffffcc",
+                              "content": "Text",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sSrc1",
+                      "name": "Search Input",
+                      "width": 320,
+                      "stroke": { "align": "inside", "thickness": 1, "fill": "#e5e5e5" },
+                      "cornerRadius": 12,
+                      "padding": [14, 16],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sSrt1",
+                          "fill": "#999999",
+                          "content": "Text",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "sSri1",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "x",
+                          "iconFontFamily": "lucide",
+                          "fill": "#999999"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "frame",
+          "id": "sSpc1",
+          "name": "Spacer 1",
+          "width": "fill_container",
+          "height": 48
+        },
+
+        {
+          "type": "frame",
+          "id": "sVar1",
+          "name": "Variables Section",
+          "width": 1280,
+          "fill": "#ffffff",
+          "cornerRadius": 24,
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [48, 48],
+          "children": [
+            {
+              "type": "frame",
+              "id": "sVhd1",
+              "name": "Variables Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sVht1",
+                  "fill": "#1a1a1a",
+                  "content": "703 Variables and Styles",
+                  "fontFamily": "Inter",
+                  "fontSize": 40,
+                  "fontWeight": "700",
+                  "lineHeight": 1.15
+                },
+                {
+                  "type": "text",
+                  "id": "sVht2",
+                  "fill": "#666666",
+                  "content": "Semantic Color and Type Variables, Spacing, Border and Elevation.",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "lineHeight": 1.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sVgr1",
+              "name": "Token Pills Grid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sVr01",
+                  "name": "Row 1 - Text Colors",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sTp01",
+                      "name": "Text Primary Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc01", "width": 20, "height": 20, "fill": "#f2f2f2" },
+                        { "type": "text", "id": "sTt01", "fill": "#ffffff", "content": "Text Primary", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp02",
+                      "name": "Text Link Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc02", "width": 20, "height": 20, "fill": "#3355FF" },
+                        { "type": "text", "id": "sTt02", "fill": "#ffffff", "content": "Text Link", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp03",
+                      "name": "Text Negative Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc03", "width": 20, "height": 20, "fill": "#e61a1a" },
+                        { "type": "text", "id": "sTt03", "fill": "#ffffff", "content": "Text Negative", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp04",
+                      "name": "Text Positive Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc04", "width": 20, "height": 20, "fill": "#009933" },
+                        { "type": "text", "id": "sTt04", "fill": "#ffffff", "content": "Text Positive", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sVr02",
+                  "name": "Row 2 - Background Colors",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sTp05",
+                      "name": "Background Primary Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc05", "width": 20, "height": 20, "fill": "#ffffff", "stroke": { "align": "inside", "thickness": 1, "fill": "#333333" } },
+                        { "type": "text", "id": "sTt05", "fill": "#ffffff", "content": "Background Primary", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp06",
+                      "name": "Background Inverse Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc06", "width": 20, "height": 20, "fill": "#333333" },
+                        { "type": "text", "id": "sTt06", "fill": "#ffffff", "content": "Background Inverse", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp07",
+                      "name": "Background Info Subtle Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc07", "width": 20, "height": 20, "fill": "#3355FF" },
+                        { "type": "text", "id": "sTt07", "fill": "#ffffff", "content": "Background Info Subtle", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sVr03",
+                  "name": "Row 3 - Icon Colors",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sTp08",
+                      "name": "Icon Primary Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc08", "width": 20, "height": 20, "fill": "#f2f2f2" },
+                        { "type": "text", "id": "sTt08", "fill": "#ffffff", "content": "Icon Primary", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp09",
+                      "name": "Icon Selected Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc09", "width": 20, "height": 20, "fill": "#3355FF" },
+                        { "type": "text", "id": "sTt09", "fill": "#ffffff", "content": "Icon Selected", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp10",
+                      "name": "Icon Disabled Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc10", "width": 20, "height": 20, "fill": "#999999" },
+                        { "type": "text", "id": "sTt10", "fill": "#ffffff", "content": "Icon Disabled", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp11",
+                      "name": "Icon Warning Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "ellipse", "id": "sTc11", "width": 20, "height": 20, "fill": "#f27f0d" },
+                        { "type": "text", "id": "sTt11", "fill": "#ffffff", "content": "Icon Warning", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sVr04",
+                  "name": "Row 4 - Typography",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sTp12",
+                      "name": "Title XL Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi12", "fill": "#666666", "content": "T", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt12", "fill": "#ffffff", "content": "Title XL", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp13",
+                      "name": "Heading L Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi13", "fill": "#666666", "content": "T", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt13", "fill": "#ffffff", "content": "Heading L", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp14",
+                      "name": "Text M Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi14", "fill": "#666666", "content": "T", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt14", "fill": "#ffffff", "content": "Text M", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp15",
+                      "name": "Link S Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi15", "fill": "#666666", "content": "T", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt15", "fill": "#ffffff", "content": "Link S", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp16",
+                      "name": "Label Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi16", "fill": "#666666", "content": "T", "fontFamily": "Inter", "fontSize": 18, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt16", "fill": "#ffffff", "content": "Label", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sVr05",
+                  "name": "Row 5 - Border Radius",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sTp17",
+                      "name": "Border 2XL Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi17", "fill": "#666666", "content": "{ }", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt17", "fill": "#ffffff", "content": "Border 2XL", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp18",
+                      "name": "Border XL Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi18", "fill": "#666666", "content": "{ }", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt18", "fill": "#ffffff", "content": "Border XL", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp19",
+                      "name": "Border L Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi19", "fill": "#666666", "content": "{ }", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt19", "fill": "#ffffff", "content": "Border L", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sTp20",
+                      "name": "Border M Pill",
+                      "fill": "#1a1a1a",
+                      "cornerRadius": 24,
+                      "padding": [10, 20],
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "sTi20", "fill": "#666666", "content": "{ }", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "300" },
+                        { "type": "text", "id": "sTt20", "fill": "#ffffff", "content": "Border M", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "frame",
+          "id": "sSpc2",
+          "name": "Spacer 2",
+          "width": "fill_container",
+          "height": 48
+        },
+
+        {
+          "type": "frame",
+          "id": "sFtr1",
+          "name": "Footer Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [80, 120],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "sFhd1",
+              "name": "Footer Heading",
+              "width": 800,
+              "fill": "#ffffff",
+              "content": "Ready to Scale?",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "600",
+              "textAlign": "center"
+            },
+            {
+              "type": "text",
+              "id": "sFds1",
+              "name": "Footer Description",
+              "width": 600,
+              "fill": "#888888",
+              "content": "Get instant access to the complete design system. One purchase. Lifetime updates.",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal",
+              "textAlign": "center",
+              "lineHeight": 1.6
+            },
+            {
+              "type": "frame",
+              "id": "sFbn1",
+              "name": "Footer CTA Button",
+              "fill": "#3355FF",
+              "cornerRadius": 12,
+              "padding": [18, 48],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sFbt1",
+                  "fill": "#ffffff",
+                  "content": "Get Started Now",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sMif1",
+              "name": "Made in Framer Badge",
+              "fill": "#1a1a1a",
+              "cornerRadius": 8,
+              "padding": [8, 16],
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sMii1",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "pen-tool",
+                  "iconFontFamily": "lucide",
+                  "fill": "#ffffff"
+                },
+                {
+                  "type": "text",
+                  "id": "sMit1",
+                  "fill": "#ffffff",
+                  "content": "Made in Framer",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    }
+  ]
+}
