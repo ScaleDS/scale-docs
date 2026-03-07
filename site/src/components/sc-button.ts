@@ -32,13 +32,14 @@ export class ScButton extends LitElement {
   static styles = css`
     :host {
       display: inline-flex;
+      width: var(--sc-button-width, auto);
     }
 
     button {
       display: inline-flex;
+      width: 100%;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       border: none;
       cursor: pointer;
       white-space: nowrap;
@@ -262,7 +263,10 @@ export class ScButton extends LitElement {
     }
 
     .label {
-      display: contents;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sc-space-s);
+      margin: 0 var(--sc-space-xs);
     }
 
     :host([loading]) .label {

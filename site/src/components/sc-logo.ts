@@ -27,8 +27,8 @@ export class ScLogo extends LitElement {
       gap: var(--sc-space-m);
     }
     :host([size='l']) .mark {
-      width: 48px;
-      height: 48px;
+      width: var(--sc-logo-mark-size, 48px);
+      height: var(--sc-logo-mark-size, 48px);
     }
     :host([size='l']) .text {
       height: 40px;
@@ -39,8 +39,8 @@ export class ScLogo extends LitElement {
       gap: var(--sc-space-s);
     }
     :host([size='m']) .mark {
-      width: 36px;
-      height: 36px;
+      width: var(--sc-logo-mark-size, 36px);
+      height: var(--sc-logo-mark-size, 36px);
     }
     :host([size='m']) .text {
       height: 30px;
@@ -51,8 +51,8 @@ export class ScLogo extends LitElement {
       gap: var(--sc-space-xs);
     }
     :host([size='s']) .mark {
-      width: 24px;
-      height: 24px;
+      width: var(--sc-logo-mark-size, 24px);
+      height: var(--sc-logo-mark-size, 24px);
     }
     :host([size='s']) .text {
       height: 20px;

@@ -35,7 +35,7 @@ export class ScButtonPill extends LitElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: var(--sc-space-s);
       border: none;
       cursor: pointer;
       white-space: nowrap;

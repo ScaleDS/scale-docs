@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js'
 import { icons } from 'feather-icons'
+import './sc-divider'
 
 let accordionId = 0
 
@@ -96,12 +97,6 @@ export class ScAccordion extends LitElement {
       height: 24px;
     }
 
-    .divider {
-      height: 1px;
-      width: 100%;
-      background: var(--sc-color-border-subtle);
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .body {
         transition: none;
@@ -139,7 +134,7 @@ export class ScAccordion extends LitElement {
           <slot></slot>
         </p>
       </div>
-      <div class="divider"></div>
+      <sc-divider variant="subtle"></sc-divider>
     `
   }
 }

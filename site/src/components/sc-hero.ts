@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
-import { heading4xl, textXl } from '../styles/typography'
 import './sc-badge'
 import './sc-button'
 import './sc-input'
@@ -8,8 +7,6 @@ import './sc-input'
 @customElement('sc-hero')
 export class ScHero extends LitElement {
   @property() badge = ''
-  @property() heading = ''
-  @property() subtext = ''
   @property({ attribute: 'primary-label' }) primaryLabel = ''
   @property({ attribute: 'primary-href' }) primaryHref = ''
   @property({ attribute: 'secondary-label' }) secondaryLabel = ''
@@ -108,20 +105,7 @@ export class ScHero extends LitElement {
       min-width: 320px;
       max-width: 688px;
       width: 100%;
-    }
-
-    /* ---- Typography ---- */
-
-    .heading {
-      ${heading4xl}
-      color: var(--sc-color-text-primary);
-      margin-top: var(--sc-space-l);
-    }
-
-    .subtext {
-      ${textXl}
-      color: var(--sc-color-text-secondary);
-      margin-top: var(--sc-space-xl);
+      gap: var(--sc-space-l);
     }
 
     /* ---- Actions ---- */
@@ -130,7 +114,7 @@ export class ScHero extends LitElement {
       display: flex;
       gap: var(--sc-space-m);
       flex-wrap: wrap;
-      margin-top: var(--sc-space-2xl);
+      margin-top: var(--sc-space-l);
     }
 
     /* ---- Email form ---- */
@@ -162,12 +146,31 @@ export class ScHero extends LitElement {
         min-width: 0;
         max-width: 100%;
       }
+    }
 
-      .content {
-        min-width: 0;
-        max-width: 100%;
+    @media (max-width: 402px) {
+      :host {
+        height: 80vh;
+      }
+
+      .container {
+        padding-bottom: var(--sc-space-2xl);
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions sc-button {
+        --sc-button-width: 100%;
+      }
+
+      .image {
+        height: 80%;
+        object-position: -80px center;
       }
     }
+
   `
 
   render() {
@@ -187,24 +190,19 @@ export class ScHero extends LitElement {
             <sc-badge>${this.badge}</sc-badge>
           ` : null}
 
-          ${this.heading ? html`
-            <h1 class="heading">${this.heading}</h1>
-          ` : null}
-
-          ${this.subtext ? html`
-            <p class="subtext">${this.subtext}</p>
-          ` : null}
+          <slot name="heading"></slot>
+          <slot name="subtext"></slot>
 
           ${(this.primaryLabel || this.secondaryLabel) ? html`
             <div class="actions">
               ${this.primaryLabel ? html`
-                <sc-button type="primary" size="l"
+                <sc-button type="outline" size="l"
                   @click=${() => this.primaryHref && (window.location.href = this.primaryHref)}>
                   ${this.primaryLabel}
                 </sc-button>
               ` : null}
               ${this.secondaryLabel ? html`
-                <sc-button type="secondary" size="l"
+                <sc-button type="outline" size="l"
                   @click=${() => this.secondaryHref && (window.location.href = this.secondaryHref)}>
                   ${this.secondaryLabel}
                 </sc-button>

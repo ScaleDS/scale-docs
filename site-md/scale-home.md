@@ -107,9 +107,9 @@ Skip "blank canvas" paralysis. Start with professional page structures. Mix sect
 ## Pricing
 
 #### Pricing
-Pay once and get a lifetime of updates.
+Pay once and get a lifetime of updates. This section is an example of a "Detached" Section component.
 
-Figma — $49 — The complete Scale design system for Figma.
+Figma — $49 — For designers who live in Figma.
 Features:
 - Figma file
 - Lifetime updates
@@ -119,11 +119,10 @@ Features:
 - Section components
 - Page templates
 - Light and dark mode
-- 
-+Currency: USD
-Buy Now
+- Currency: USD
+CTA: Buy Now
 
-Framer — $129 — The complete Scale design system for Framer.
+Framer — $129 — For Framer creators and builders.
 Features:
 - Framer file
 - Lifetime updates
@@ -136,9 +135,9 @@ Features:
 - Currency: USD
 CTA: Buy Now
 
-Everything — $149 — Scale for both Figma and Framer, at a bundle price.
+Everything — $149 — Design and build for a bundled price.
 Features:
-- Figma and Framer files
+- Framer and Figma files
 - Lifetime updates
 - Unlimited projects
 - Semantic foundations

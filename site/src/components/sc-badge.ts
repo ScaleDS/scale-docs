@@ -33,13 +33,6 @@ export class ScBadge extends LitElement {
       background: var(--sc-color-background-primary);
       border-color: var(--sc-color-border-primary);
       color: var(--sc-color-text-primary);
-      cursor: pointer;
-    }
-    :host([status='default']) .badge:hover {
-      background: var(--sc-color-background-hover);
-    }
-    :host([status='default']) .badge:active {
-      background: var(--sc-color-background-pressed);
     }
 
     :host([status='info']) .badge {

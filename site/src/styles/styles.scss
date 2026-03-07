@@ -3,12 +3,7 @@
 /* ---- Layout ---- */
 
 .page-section {
-  padding: var(--sc-space-8xl) var(--sc-space-4xl);
-}
-
-.section-inner {
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: var(--sc-space-8xl) 0;
 }
 
 /* ---- Header ---- */
@@ -108,7 +103,7 @@
 .platform-switch-section {
   display: flex;
   justify-content: center;
-  padding: var(--sc-space-3xl) var(--sc-space-4xl);
+  padding: 16px var(--sc-space-4xl) 0;
 }
 
 /* Platform switch — buttons don't inherit font, must be explicit */
@@ -182,29 +177,13 @@
 
 /* .bento-card p — global p (text-l + text-secondary) is correct, no override needed */
 
-/* ---- Feature grid ---- */
+/* ---- Features section ---- */
 
 .features {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sc-space-5xl);
-  margin-top: var(--sc-space-5xl);
-  list-style: none;
-  padding: 0;
-}
-
-.feature {
   display: flex;
   flex-direction: column;
-  gap: var(--sc-space-s);
+  margin-top: var(--sc-space-5xl);
 }
-
-.feature h4 {
-  /* global h4 sets heading-l (32px) — override to heading-s (20px) */
-  @include type.sc-typography-heading-s;
-}
-
-/* .feature p — global p (text-l + text-secondary) is correct, no override needed */
 
 /* ---- Pricing ---- */
 

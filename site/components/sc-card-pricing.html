@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scale — Card Pricing Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/main.ts"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      html, body { height: 100%; }
+      body {
+        font-family: var(--sc-type-family-inter), system-ui, sans-serif;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* ---- Canvas ---- */
+      .canvas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem;
+        background: var(--sc-color-background-subtle);
+        transition: background-color 200ms ease;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      .preview-wrap {
+        width: 380px;
+      }
+
+      /* ---- Sidebar ---- */
+      .sidebar {
+        border-left: var(--sc-border-width-s) solid var(--sc-color-border-secondary);
+        padding: 1.5rem;
+        overflow-y: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        background: var(--sc-color-surface-l1);
+      }
+      .sidebar h1 {
+        font-size: var(--sc-type-size-l);
+        font-weight: var(--sc-type-weight-semi-bold);
+        color: var(--sc-color-text-primary);
+      }
+      .control {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .control label {
+        font-size: var(--sc-type-size-s);
+        font-weight: var(--sc-type-weight-semi-bold);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--sc-color-text-tertiary);
+      }
+      .select-control {
+        position: relative;
+      }
+      .select-control select {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 1;
+      }
+      .toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .toggle-row label {
+        font-size: var(--sc-type-size-m);
+        font-weight: var(--sc-type-weight-regular);
+        color: var(--sc-color-text-primary);
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .theme-toggle {
+        display: flex;
+        gap: 4px;
+        background: var(--sc-color-background-neutral);
+        border-radius: 6px;
+        padding: 2px;
+      }
+      .theme-toggle button {
+        flex: 1;
+        font-family: var(--sc-type-family-inter), system-ui, sans-serif;
+        font-size: var(--sc-type-size-s);
+        font-weight: var(--sc-type-weight-regular);
+        padding: 4px 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background: transparent;
+        color: rgba(0, 0, 0, 0.45);
+        transition: background 150ms ease, color 150ms ease;
+      }
+      [data-theme="dark"] .theme-toggle button {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .theme-toggle button.active {
+        background: var(--sc-color-background-primary);
+        color: var(--sc-color-text-primary);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Canvas -->
+    <div class="canvas">
+      <div class="preview-wrap">
+        <sc-card-pricing id="preview">
+          <sc-badge slot="badge" status="info">Pro</sc-badge>
+          <span slot="plan">$49 / mo</span>
+          <span slot="description">Everything you need to scale your workflow and collaborate with your team.</span>
+
+          <sc-row trailing-icon="check">Unlimited projects</sc-row>
+          <sc-row trailing-icon="check">Priority support</sc-row>
+          <sc-row trailing-icon="check">Advanced analytics</sc-row>
+          <sc-row trailing-icon="check">Custom integrations</sc-row>
+          <sc-row trailing-icon="check">Team collaboration</sc-row>
+          <sc-row trailing-icon="check">SSO & access controls</sc-row>
+
+          <sc-button slot="actions" type="primary">Get started</sc-button>
+        </sc-card-pricing>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h1>Card Pricing</h1>
+
+      <!-- Theme -->
+      <div class="control">
+        <label>Theme</label>
+        <div class="theme-toggle" id="themeToggle">
+          <button class="active" data-theme="light">Light</button>
+          <button data-theme="dark">Dark</button>
+        </div>
+      </div>
+
+      <sc-divider variant="subtle"></sc-divider>
+
+      <!-- Plan -->
+      <sc-input id="planInput" label="Plan" value="$49 / mo"></sc-input>
+
+      <!-- Description -->
+      <sc-input id="descriptionInput" label="Description" value="Everything you need to scale your workflow and collaborate with your team."></sc-input>
+
+      <!-- Badge Status -->
+      <div class="select-control">
+        <sc-input class="select-input" id="badgeStatusDisplay" label="Badge Status" value="Info" trailing-icon="chevron-down"></sc-input>
+        <select id="badgeStatusSelect">
+          <option value="default">Default</option>
+          <option value="info" selected>Info</option>
+          <option value="warning">Warning</option>
+          <option value="negative">Negative</option>
+          <option value="positive">Positive</option>
+          <option value="mono">Mono</option>
+        </select>
+      </div>
+
+      <!-- Badge Label -->
+      <sc-input id="badgeLabelInput" label="Badge Label" value="Pro"></sc-input>
+
+      <!-- Button Label -->
+      <sc-input id="buttonLabelInput" label="Button Label" value="Get started"></sc-input>
+
+      <!-- Button Type -->
+      <div class="select-control">
+        <sc-input class="select-input" id="buttonTypeDisplay" label="Button Type" value="Primary" trailing-icon="chevron-down"></sc-input>
+        <select id="buttonTypeSelect">
+          <option value="primary" selected>Primary</option>
+          <option value="secondary">Secondary</option>
+          <option value="outline">Outline</option>
+        </select>
+      </div>
+    </div>
+
+    <script>
+      const preview = document.getElementById('preview')
+
+      // Init sidebar inputs
+      customElements.whenDefined('sc-input').then(() => {
+        document.querySelectorAll('.sidebar sc-input').forEach(el => {
+          el.showHelpText = false
+        })
+      })
+
+      // Plan
+      document.getElementById('planInput').addEventListener('input', (e) => {
+        if (!e.detail) return
+        preview.querySelector('[slot="plan"]').textContent = e.detail.value
+      })
+
+      // Description
+      document.getElementById('descriptionInput').addEventListener('input', (e) => {
+        if (!e.detail) return
+        preview.querySelector('[slot="description"]').textContent = e.detail.value
+      })
+
+      // Badge Status
+      document.getElementById('badgeStatusSelect').addEventListener('change', (e) => {
+        document.getElementById('badgeStatusDisplay').setAttribute('value', e.target.options[e.target.selectedIndex].text)
+        preview.querySelector('[slot="badge"]').setAttribute('status', e.target.value)
+      })
+
+      // Badge Label
+      document.getElementById('badgeLabelInput').addEventListener('input', (e) => {
+        if (!e.detail) return
+        preview.querySelector('[slot="badge"]').textContent = e.detail.value
+      })
+
+      // Button Label
+      document.getElementById('buttonLabelInput').addEventListener('input', (e) => {
+        if (!e.detail) return
+        preview.querySelector('[slot="actions"]').textContent = e.detail.value
+      })
+
+      // Button Type
+      document.getElementById('buttonTypeSelect').addEventListener('change', (e) => {
+        document.getElementById('buttonTypeDisplay').setAttribute('value', e.target.options[e.target.selectedIndex].text)
+        preview.querySelector('[slot="actions"]').setAttribute('type', e.target.value)
+      })
+
+      // Theme toggle
+      document.getElementById('themeToggle').addEventListener('click', (e) => {
+        const btn = e.target.closest('button')
+        if (!btn) return
+        const theme = btn.dataset.theme
+        document.documentElement.setAttribute('data-theme', theme)
+        document.querySelectorAll('#themeToggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme } }))
+      })
+    </script>
+  </body>
+</html>

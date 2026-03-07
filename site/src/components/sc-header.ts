@@ -25,22 +25,21 @@ export class ScHeader extends LitElement {
   @property({ type: Boolean, reflect: true, attribute: 'show-search' }) showSearch = false
 
   @state() private _theme: 'light' | 'dark' = 'light'
-  @state() private _mobileOpen = false
-  @state() private _scrolled = false
+  @state() private _mobile = false
 
-  private _onScroll = () => {
-    this._scrolled = window.scrollY >= 120
-  }
+  private _mq = window.matchMedia('(max-width: 810px)')
+  private _onMqChange = (e: MediaQueryListEvent) => { this._mobile = e.matches }
 
   connectedCallback() {
     super.connectedCallback()
     this._theme = (document.documentElement.dataset.theme as 'light' | 'dark') ?? 'light'
-    window.addEventListener('scroll', this._onScroll, { passive: true })
+    this._mobile = this._mq.matches
+    this._mq.addEventListener('change', this._onMqChange)
   }
 
   disconnectedCallback() {
     super.disconnectedCallback()
-    window.removeEventListener('scroll', this._onScroll)
+    this._mq.removeEventListener('change', this._onMqChange)
   }
 
   private _setTheme(theme: 'light' | 'dark') {
@@ -71,19 +70,20 @@ export class ScHeader extends LitElement {
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent);
+      background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--sc-color-surface-l3) 50%, transparent) 0%,
+        transparent 100%
+      );
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      opacity: 0;
-      transition: opacity 250ms ease;
+      mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
       pointer-events: none;
     }
 
-    .header-bg.scrolled {
-      opacity: 1;
-    }
-
     /* ---- Three-column grid for leading / nav / trailing ---- */
+
 
     .leading {
       display: flex;
@@ -169,7 +169,7 @@ export class ScHeader extends LitElement {
       height: 28px;
       border-radius: 50%;
       background: var(--sc-color-surface-l1);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--sc-shadow-l1);
       transition: transform 250ms ease;
       pointer-events: none;
     }
@@ -212,47 +212,16 @@ export class ScHeader extends LitElement {
       gap: var(--sc-space-s);
     }
 
-    /* ---- Mobile toggle ---- */
-
-    .mobile-toggle {
-      display: none;
-    }
-
-    /* ---- Mobile drawer ---- */
-
-    .mobile-drawer {
-      display: none;
-      flex-direction: column;
-      gap: var(--sc-space-xs);
-      padding: var(--sc-space-s) var(--sc-space-m) var(--sc-space-l);
-      background: color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .mobile-drawer.open {
-      display: flex;
-    }
-
-    .mobile-drawer .nav-link {
-      padding: var(--sc-space-m) var(--sc-space-l);
-    }
-
-    .mobile-actions {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sc-space-s);
-      padding-top: var(--sc-space-m);
-      margin-top: var(--sc-space-xs);
-      border-top: 1px solid var(--sc-color-border-subtle);
-    }
-
     /* ---- Responsive ---- */
 
     @media (max-width: 810px) {
       .header {
         height: 64px;
         padding: 0 20px;
+      }
+
+      sc-logo {
+        --sc-logo-mark-size: 32px;
       }
 
       .nav {
@@ -264,27 +233,8 @@ export class ScHeader extends LitElement {
         transform: none;
       }
 
-      .theme-toggle {
-        display: none;
-      }
-
-      .actions {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: inline-flex;
-      }
     }
   `
-
-  private _toggleMobile() {
-    this._mobileOpen = !this._mobileOpen
-  }
-
-  private _closeMobile() {
-    this._mobileOpen = false
-  }
 
   private _sunIcon() {
     return unsafeHTML(icons['sun'].toSvg({ width: 14, height: 14 }))
@@ -297,10 +247,10 @@ export class ScHeader extends LitElement {
   render() {
     return html`
       <header class="header">
-        <div class="header-bg ${this._scrolled ? 'scrolled' : ''}"></div>
+        <div class="header-bg"></div>
 
         <div class="leading">
-          <sc-logo size="m"></sc-logo>
+          <sc-logo size="m" ?hide-text=${this._mobile}></sc-logo>
         </div>
 
         <nav class="nav" aria-label="Main">
@@ -333,7 +283,7 @@ export class ScHeader extends LitElement {
 
           <div class="actions">
             ${this.secondaryLabel ? html`
-              <sc-button type="secondary" size="m"
+              <sc-button type="outline" size="m"
                 @click=${() => this.secondaryHref && (window.location.href = this.secondaryHref)}>
                 ${this.secondaryLabel}
               </sc-button>
@@ -346,41 +296,8 @@ export class ScHeader extends LitElement {
             ` : null}
           </div>
 
-          <sc-button-icon
-            class="mobile-toggle"
-            type="tertiary-mono"
-            size="s"
-            icon=${this._mobileOpen ? 'x' : 'menu'}
-            label=${this._mobileOpen ? 'Close menu' : 'Open menu'}
-            @click=${this._toggleMobile}
-          ></sc-button-icon>
-
         </div>
       </header>
-
-      <div class="mobile-drawer ${this._mobileOpen ? 'open' : ''}" aria-hidden=${!this._mobileOpen}>
-        <nav aria-label="Mobile navigation">
-          ${this.navLinks.map(link => html`
-            <a class="nav-link" href=${link.href} @click=${this._closeMobile}>${link.label}</a>
-          `)}
-        </nav>
-        ${(this.primaryLabel || this.secondaryLabel) ? html`
-          <div class="mobile-actions">
-            ${this.secondaryLabel ? html`
-              <sc-button type="secondary" size="m"
-                @click=${() => { this.secondaryHref && (window.location.href = this.secondaryHref); this._closeMobile() }}>
-                ${this.secondaryLabel}
-              </sc-button>
-            ` : null}
-            ${this.primaryLabel ? html`
-              <sc-button type="primary" size="m"
-                @click=${() => { this.primaryHref && (window.location.href = this.primaryHref); this._closeMobile() }}>
-                ${this.primaryLabel}
-              </sc-button>
-            ` : null}
-          </div>
-        ` : null}
-      </div>
     `
   }
 }

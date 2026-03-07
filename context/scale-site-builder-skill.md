@@ -214,6 +214,94 @@ import { dirname } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 ```
 
+## Breakpoints
+
+Two breakpoints used consistently across all section and layout components:
+
+| Breakpoint | Value | Usage |
+|---|---|---|
+| Tablet | `max-width: 810px` | Multi-column → single column, form/card stacking |
+| Mobile | `max-width: 402px` | Full-width buttons, text left-align, reduced padding |
+
+## Spacing tokens
+
+All padding, margin, and gap values use `--sc-space-*` tokens. Never use raw `px` for spacing (exceptions: `3px` toggle padding, `20px` header mobile padding, border widths, dimensions).
+
+| Token | Value |
+|---|---|
+| `--sc-space-xs` | 4px |
+| `--sc-space-s` | 8px |
+| `--sc-space-m` | 12px |
+| `--sc-space-l` | 16px |
+| `--sc-space-xl` | 24px |
+| `--sc-space-2xl` | 32px |
+| `--sc-space-3xl` | 48px |
+| `--sc-space-4xl` | 64px |
+| `--sc-space-5xl` | 80px |
+| `--sc-space-8xl` | 128px |
+
+## Mobile layout patterns
+
+### Stacking flex rows
+
+```css
+@media (max-width: 402px) {
+  .container {
+    flex-direction: column;
+  }
+}
+```
+
+### Full-width buttons in stacked actions
+
+```css
+@media (max-width: 402px) {
+  .actions {
+    flex-direction: column;
+  }
+  .actions sc-button {
+    --sc-button-width: 100%;
+  }
+}
+```
+
+### Full-width slotted inputs and buttons
+
+```css
+@media (max-width: 402px) {
+  .form {
+    flex-direction: column;
+  }
+  .form ::slotted([slot='input']),
+  .form ::slotted([slot='action']) {
+    width: 100%;
+  }
+}
+```
+
+### Preventing flex children from over-stretching
+
+When a flex container has a min-height or the parent is `flex: 1`, empty slot children can grow to fill the space, showing as a large gap. Fix with `flex: none` on mobile:
+
+```css
+@media (max-width: 402px) {
+  .content {
+    flex: none;  /* sizes to natural height only */
+  }
+}
+```
+
+### Left-aligning section text on mobile
+
+```css
+@media (max-width: 402px) {
+  .container {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+```
+
 ## Gotchas
 
 **Token quirks**
