@@ -9,9 +9,13 @@ A site for the **Scale** design system, built for Figma and Framer users.
 | `site/` | Vite + Lit + TypeScript site with all components and previews |
 | `site/src/components/` | Lit web components (`sc-button`, `sc-input`, `sc-toggle`, etc.) |
 | `site/src/styles/` | SCSS design tokens (`--sc-*` CSS custom properties) |
+| `site/src/styles/json/` | Upstream design token JSON source files |
+| `site/public/` | Static assets served at root URL (hero images, etc.) |
 | `site/components/` | Interactive preview pages, one per component |
 | `site-md/` | Markdown reference for foundations and design decisions |
 | `context/` | AI builder context and skill files |
+| `context/framer/` | Framer template submission and DS checklist docs |
+| `pencil/` | Pencil design files (`.pen`) |
 
 ## Running locally
 

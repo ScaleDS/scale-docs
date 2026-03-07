@@ -6,8 +6,10 @@ This project is for a design system called Scale, used by Figma and Framer users
 
 - **Design** — Figma components (use Figma MCP to read anatomy, variants, properties, token values)
 - **CSS tokens** — `site/src/styles/` — map Figma variables to `--sc-*` equivalents
+- **Token JSON source** — `site/src/styles/json/` — upstream design token JSON files
 - **Foundations reference** — `site-md/foundations/`
-- **Assets** — `site/public/assets/`
+- **Framer context** — `context/framer/` — Framer template and DS submission docs
+- **Static assets** — `site/public/` — images and other files served at root URL (e.g. `/images/hero/…`)
 
 ## Framework
 
@@ -61,6 +63,10 @@ export class Sc{Name} extends LitElement {
 3. Create `site/src/components/sc-{name}.ts` with all variants, sizes, and states
 4. Register in `site/src/main.ts`: `import './components/sc-{name}'`
 5. Create preview at `site/components/sc-{name}.html`
+
+### Static assets
+
+Images and other static files go in `site/public/` — they're served verbatim at the root URL and are not processed by Vite. Reference them as absolute paths (e.g. `/images/hero/filename.jpg`). Do **not** put images in `site/src/assets/` unless they are imported directly in TypeScript — string attributes in HTML cannot be resolved by Vite.
 
 ### Icons
 
