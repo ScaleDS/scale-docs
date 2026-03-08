@@ -243,6 +243,12 @@ Override the horizontal offset per-card with the `--sc-card-object-position` cus
 <sc-card-image style="--sc-card-object-position: -16px top">
 ```
 
+Override `object-fit` per-card with `--sc-card-object-fit` (defaults to `cover`):
+
+```html
+<sc-card-image style="--sc-card-object-fit: contain">
+```
+
 The breakpoint reset at `≤810px` also applies `left top`, keeping the crop consistent across all screen sizes.
 
 ### Section feature images
@@ -289,6 +295,27 @@ disconnectedCallback() {
   super.disconnectedCallback()
   window.removeEventListener('theme-change', this._onThemeChange)
 }
+```
+
+## Image file naming conventions
+
+All static images live in `site/public/images/` organised by platform:
+
+| Folder | Pattern | Usage |
+|---|---|---|
+| `images/framer/` | `sc-image-framer-{section}-{variant}-{theme}.png` | Framer bento + feature images |
+| `images/figma/` | `sc-image-figma-{section}-{variant}-{theme}.png` | Figma bento + feature images |
+
+Bento cards use `-light` / `-dark` pairs. Framer feature section images are light-only (no dark variant). Always use `image-src` + `image-src-dark` attributes on `sc-card-image` and `sc-section-feature` — never inline `src` on `<img>` tags.
+
+## Platform switch default
+
+The platform switch defaults to **Framer** (active button + active content panel). When updating JS that manages the platform switch state, ensure Framer starts as active:
+
+```js
+// Active button gets type="secondary", inactive gets type="tertiary"
+framerBtn.setAttribute('type', 'secondary')
+figmaBtn.setAttribute('type', 'tertiary')
 ```
 
 ## `color-mix()` for opacity without new tokens

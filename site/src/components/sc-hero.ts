@@ -9,8 +9,10 @@ export class ScHero extends LitElement {
   @property() badge = ''
   @property({ attribute: 'primary-label' }) primaryLabel = ''
   @property({ attribute: 'primary-href' }) primaryHref = ''
+  @property({ attribute: 'primary-leading-icon' }) primaryLeadingIcon = ''
   @property({ attribute: 'secondary-label' }) secondaryLabel = ''
   @property({ attribute: 'secondary-href' }) secondaryHref = ''
+  @property({ attribute: 'secondary-leading-icon' }) secondaryLeadingIcon = ''
   @property({ attribute: 'image-src' }) imageSrc = ''
   @property({ attribute: 'image-src-dark' }) imageSrcDark = ''
   @property({ attribute: 'image-alt' }) imageAlt = ''
@@ -184,13 +186,15 @@ export class ScHero extends LitElement {
           ${(this.primaryLabel || this.secondaryLabel) ? html`
             <div class="actions">
               ${this.primaryLabel ? html`
-                <sc-button type="outline" size="l"
+                <sc-button type="secondary" size="l"
+                  leading-icon=${this.primaryLeadingIcon || ''}
                   @click=${() => this.primaryHref && (window.location.href = this.primaryHref)}>
                   ${this.primaryLabel}
                 </sc-button>
               ` : null}
               ${this.secondaryLabel ? html`
-                <sc-button type="outline" size="l"
+                <sc-button type="secondary" size="l"
+                  leading-icon=${this.secondaryLeadingIcon || ''}
                   @click=${() => this.secondaryHref && (window.location.href = this.secondaryHref)}>
                   ${this.secondaryLabel}
                 </sc-button>

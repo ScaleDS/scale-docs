@@ -55,7 +55,7 @@ export class ScCardImage extends LitElement {
     :host([variant='default']) .image-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: var(--sc-card-object-fit, cover);
       object-position: var(--sc-card-object-position, left top);
       display: block;
     }
@@ -99,7 +99,7 @@ export class ScCardImage extends LitElement {
       flex: 1;
       min-height: 0;
       width: 100%;
-      object-fit: cover;
+      object-fit: var(--sc-card-object-fit, cover);
       object-position: var(--sc-card-object-position, left top);
       display: block;
     }

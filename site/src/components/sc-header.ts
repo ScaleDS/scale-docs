@@ -23,6 +23,7 @@ export class ScHeader extends LitElement {
   @property({ attribute: 'secondary-label' }) secondaryLabel = ''
   @property({ attribute: 'secondary-href' }) secondaryHref = ''
   @property({ type: Boolean, reflect: true, attribute: 'show-search' }) showSearch = false
+  @property({ type: Boolean, reflect: true, attribute: 'bg-extended' }) bgExtended = false
 
   @state() private _theme: 'light' | 'dark' = 'light'
   @state() private _mobile = false
@@ -73,9 +74,10 @@ export class ScHeader extends LitElement {
       right: 0;
       bottom: -96px;
       z-index: -1;
+      transition: bottom 300ms ease;
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent) 0%,
+        color-mix(in srgb, var(--sc-color-surface-l3) 90%, transparent) 0%,
         transparent 100%
       );
       backdrop-filter: blur(8px);
@@ -83,6 +85,10 @@ export class ScHeader extends LitElement {
       mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
       pointer-events: none;
+    }
+
+    :host([bg-extended]) .header-bg {
+      bottom: -128px;
     }
 
     /* ---- Three-column grid for leading / nav / trailing ---- */
@@ -285,7 +291,7 @@ export class ScHeader extends LitElement {
 
           <div class="actions">
             ${this.secondaryLabel ? html`
-              <sc-button type="outline" size="m"
+              <sc-button type="secondary" size="m"
                 @click=${() => this.secondaryHref && (window.location.href = this.secondaryHref)}>
                 ${this.secondaryLabel}
               </sc-button>

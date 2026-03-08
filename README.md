@@ -43,8 +43,11 @@ Output goes to `site/dist/`.
 - `sc-header` — fixed header with always-on frosted-glass background gradient (extends 96px below header bounds), animated pill theme toggle (light/dark) with glass effect via `::part(theme-toggle)`, and responsive mobile layout
 - `sc-hero` — full-width hero with badge, heading, CTAs, and theme-reactive image swap (light ↔ dark)
 - `sc-button`, `sc-button-icon`, `sc-logo`, `sc-input`, `sc-accordion` — throughout sections
-- Platform switch (Framer / Figma) — sticky to top of page with pure CSS `position: sticky` (no JS snap), frosted-glass background via `.sc-glass`, full-width on mobile
-- Figma feature sections — all six `sc-section-feature` components now have images; theme-reactive where applicable
+- Platform switch (Framer / Figma) — sticky to top of page with pure CSS `position: sticky` (no JS snap), frosted-glass background via `.sc-glass`, full-width on mobile; **defaults to Framer**
+- Framer bento grid — all 4 cards have images (`/images/framer/sc-image-framer-bento-*.png`)
+- Framer feature sections — all 5 `sc-section-feature` components have images (`/images/framer/sc-image-framer-feature-*.png`); light-only (no dark variants)
+- Figma bento grid — all 4 cards have images (`/images/figma/sc-image-figma-bento-*.png`)
+- Figma feature sections — all 6 `sc-section-feature` components have images; theme-reactive where applicable
 - Pricing cards and FAQ accordion
 
 ### `.sc-glass` utility
@@ -99,7 +102,7 @@ For Shadow DOM elements, use `::part()` with the same values (e.g. `sc-header::p
 
 | Component | Description |
 |---|---|
-| `sc-card-image` | Image card used in bento and feature grids |
+| `sc-card-image` | Image card used in bento and feature grids; supports `--sc-card-object-fit` and `--sc-card-object-position` CSS custom properties |
 | `sc-card-pricing` | Pricing tier card with header, feature rows, and CTA footer |
 
 ## Responsive design

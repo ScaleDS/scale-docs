@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <script type="module" src="/src/main.ts"></script>
+    <style>
+      body { opacity: 0; transition: opacity 250ms ease; }
+    </style>
   </head>
   <body>
 
@@ -24,7 +27,9 @@
     <sc-hero id="hero"
       badge="3.1"
       primary-label="Preview in Framer"
+      primary-leading-icon="framer"
       secondary-label="Preview in Figma"
+      secondary-leading-icon="figma"
       image-src="/images/hero/Scale - Framer - Hero - Light.jpg"
       image-src-dark="/images/hero/Scale - Framer - Hero - Dark.jpg"
       image-alt="Scale design system preview"
@@ -43,25 +48,27 @@
     <!-- ============================================================ -->
     <!-- Platform switch                                               -->
     <!-- ============================================================ -->
+    <div id="platform-switch-sentinel" style="height:1px;pointer-events:none;"></div>
     <div class="platform-switch-section">
       <div class="platform-switch sc-glass">
-        <button data-platform="framer">For Framer</button>
-        <button class="active" data-platform="figma">For Figma</button>
+        <sc-button type="secondary" size="m" leading-icon="framer" data-platform="framer">For Framer</sc-button>
+        <sc-button type="tertiary" size="m" leading-icon="figma" data-platform="figma">For Figma</sc-button>
       </div>
     </div>
 
     <!-- ============================================================ -->
     <!-- Framer Content                                                -->
     <!-- ============================================================ -->
-    <div id="content-framer" class="platform-content" aria-label="Framer features">
+    <div id="content-framer" class="platform-content active" aria-label="Framer features">
 
       <sc-section-bento>
 
         <sc-card-image
           slot="card-1"
           variant="fill"
-          image-src="/images/bento/framer-components-light.jpg"
-          image-src-dark="/images/bento/framer-components-dark.jpg"
+          style="--sc-card-object-position: -16px top"
+          image-src="/images/framer/sc-image-framer-bento-components-light.png"
+          image-src-dark="/images/framer/sc-image-framer-bento-components-dark.png"
           image-alt="Scale components in Framer">
           <h4 slot="heading">56 Components. 8,368 possibilities.</h4>
           <p slot="description">Web components, properties and variants with thousands of combinations.</p>
@@ -70,8 +77,9 @@
         <sc-card-image
           slot="card-2"
           variant="fill"
-          image-src="/images/bento/framer-styles-light.jpg"
-          image-src-dark="/images/bento/framer-styles-dark.jpg"
+          style="--sc-card-object-position: -16px top"
+          image-src="/images/framer/sc-image-framer-bento-variables-light.png"
+          image-src-dark="/images/framer/sc-image-framer-bento-variables-dark.png"
           image-alt="Scale styles and variables">
           <h4 slot="heading">120 Styles & Variables</h4>
           <p slot="description">Semantic color and type styles.</p>
@@ -80,8 +88,9 @@
         <sc-card-image
           slot="card-3"
           variant="fill"
-          image-src="/images/bento/framer-icons-light.jpg"
-          image-src-dark="/images/bento/framer-icons-dark.jpg"
+          style="--sc-card-object-position: -16px top"
+          image-src="/images/framer/sc-image-framer-bento-icons-light.png"
+          image-src-dark="/images/framer/sc-image-framer-bento-icons-dark.png"
           image-alt="Scale icon library">
           <h4 slot="heading">288 Icons</h4>
           <p slot="description">Feather icons and custom status icons.</p>
@@ -90,8 +99,8 @@
         <sc-card-image
           slot="card-4"
           variant="fill"
-          image-src="/images/bento/framer-sections-light.jpg"
-          image-src-dark="/images/bento/framer-sections-dark.jpg"
+          image-src="/images/framer/sc-image-framer-bento-sections-light.png"
+          image-src-dark="/images/framer/sc-image-framer-bento-sections-dark.png"
           image-alt="Scale content modules">
           <h4 slot="heading">15 Content Modules. 8,117 possibilities.</h4>
           <p slot="description">Hero, Feature, Social, Pricing, CTA and FAQ.</p>
@@ -99,23 +108,33 @@
 
       </sc-section-bento>
 
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/framer/sc-image-framer-feature-variables-light.png"
+        image-alt="Scale color variables in Framer">
         <h2 slot="heading">Global Semantic Color</h2>
         <p slot="subtext">Use color in a meaningful way across your projects, toggle automatically between Light and Dark modes and watch updates ripple across every screen instantly.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/framer/sc-image-framer-feature-typography-light.png"
+        image-alt="Scale typography in Framer">
         <h2 slot="heading">Responsive Typography</h2>
         <p slot="subtext">Perfect hierarchy, zero math. Our t-shirt sized type scale uses fluid responsiveness to adapt flawlessly from Desktop to Mobile. No manual breakpoint tweaks required.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/framer/sc-image-framer-feature-components-light.png"
+        image-alt="Scale component library in Framer">
         <h2 slot="heading">Smart Component Library</h2>
         <p slot="subtext">Don't build from scratch, just configure. Access a robust library pre-wired with variants, variables and properties. Simply drag, drop, and toggle the props to match your needs.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/framer/sc-image-framer-feature-sections-light.png"
+        image-alt="Scale section blocks in Framer">
         <h2 slot="heading">Adaptive Section Blocks</h2>
         <p slot="subtext">Drag-and-drop sections that instantly inherit your global theme and resize perfectly for every device. Edit the master component once, and see it update everywhere.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/framer/sc-image-framer-feature-templates-light.png"
+        image-alt="Scale launch-ready templates in Framer">
         <h2 slot="heading">Launch-Ready Templates</h2>
         <p slot="subtext">Skip "blank canvas" paralysis. Start with professional page structures. Mix sections, apply your brand, and finish your site in a fraction of the time.</p>
       </sc-section-feature>
@@ -125,7 +144,7 @@
     <!-- ============================================================ -->
     <!-- Figma Content                                                 -->
     <!-- ============================================================ -->
-    <div id="content-figma" class="platform-content active" aria-label="Figma features">
+    <div id="content-figma" class="platform-content" aria-label="Figma features">
 
       <sc-section-bento>
 
@@ -232,7 +251,7 @@
           <sc-row trailing-icon="check">Page templates</sc-row>
           <sc-row trailing-icon="check">Light and dark mode</sc-row>
           <sc-row>Currency: USD</sc-row>
-          <sc-button slot="actions" type="outline">Buy Now</sc-button>
+          <sc-button slot="actions" type="secondary">Buy Now</sc-button>
         </sc-card-pricing>
 
         <sc-card-pricing slot="card-2">
@@ -248,7 +267,7 @@
           <sc-row trailing-icon="check">Page templates</sc-row>
           <sc-row trailing-icon="check">Light and dark mode</sc-row>
           <sc-row>Currency: USD</sc-row>
-          <sc-button slot="actions" type="outline">Buy Now</sc-button>
+          <sc-button slot="actions" type="secondary">Buy Now</sc-button>
         </sc-card-pricing>
 
         <sc-card-pricing slot="card-3">
@@ -309,15 +328,24 @@
     ></sc-footer>
 
     <script>
+      // Extend header gradient when platform switch becomes sticky
+      const header = document.querySelector('sc-header')
+      const sentinel = document.getElementById('platform-switch-sentinel')
+      const stickyObserver = new IntersectionObserver(
+        ([entry]) => { header.toggleAttribute('bg-extended', !entry.isIntersecting) },
+        { threshold: 0, rootMargin: '0px' }
+      )
+      stickyObserver.observe(sentinel)
+
       // Platform switch
-      const platformBtns = document.querySelectorAll('.platform-switch button')
+      const platformBtns = document.querySelectorAll('.platform-switch sc-button')
       const framerContent = document.getElementById('content-framer')
       const figmaContent = document.getElementById('content-figma')
 
       platformBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          platformBtns.forEach(b => b.classList.remove('active'))
-          btn.classList.add('active')
+          platformBtns.forEach(b => b.setAttribute('type', 'tertiary'))
+          btn.setAttribute('type', 'secondary')
           if (btn.dataset.platform === 'framer') {
             framerContent.classList.add('active')
             figmaContent.classList.remove('active')
@@ -334,6 +362,17 @@
           el.showHelpText = false
           el.showLabel = false
         })
+      })
+
+      // Reveal page once all components are defined
+      Promise.all([
+        'sc-header', 'sc-hero', 'sc-section-content', 'sc-section-bento',
+        'sc-section-feature', 'sc-section-pricing', 'sc-section-faq',
+        'sc-section-signup', 'sc-card-image', 'sc-card-pricing',
+        'sc-badge', 'sc-row', 'sc-button', 'sc-accordion',
+        'sc-input', 'sc-footer',
+      ].map(n => customElements.whenDefined(n))).then(() => {
+        document.body.style.opacity = '1'
       })
     </script>
 

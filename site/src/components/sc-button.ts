@@ -310,6 +310,7 @@ export class ScButton extends LitElement {
   render() {
     return html`
       <button
+        part="button"
         type="button"
         ?disabled=${this.disabled || this.loading}
         aria-busy=${this.loading ? 'true' : 'false'}

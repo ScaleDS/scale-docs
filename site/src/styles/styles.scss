@@ -125,12 +125,12 @@
     width: 100%;
   }
 
-  .platform-switch button {
+  .platform-switch sc-button {
     flex: 1;
+    --sc-button-width: 100%;
   }
 }
 
-/* Platform switch — buttons don't inherit font, must be explicit */
 .platform-switch {
   display: flex;
   align-items: center;
@@ -145,21 +145,11 @@ sc-header::part(theme-toggle) {
   -webkit-backdrop-filter: blur(16px);
 }
 
-.platform-switch button {
-  @include type.sc-typography-label-m;
-  padding: var(--sc-space-s) var(--sc-space-2xl);
-  border: none;
-  border-radius: var(--sc-border-radius-s);
-  background: transparent;
-  cursor: pointer;
-  color: var(--sc-color-text-tertiary);
-  transition: background 150ms ease, color 150ms ease;
-}
 
-.platform-switch button.active {
+.platform-switch sc-button[type='secondary']::part(button) {
   background: var(--sc-color-surface-l4);
-  color: var(--sc-color-text-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  box-shadow: var(--sc-shadow-l1);
 }
 
 /* ---- Platform content panels ---- */
