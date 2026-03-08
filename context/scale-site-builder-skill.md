@@ -125,32 +125,27 @@ customElements.whenDefined('sc-input').then(() => {
 
 ### Theme toggle
 
-Segmented button style. Inactive buttons: `color: rgba(0,0,0,0.45)` in light, `[data-theme="dark"] color: rgba(255,255,255,0.45)` in dark — never use tokens here (insufficient contrast). Active: `background: var(--sc-color-background-primary)`, `color: var(--sc-color-text-primary)`.
+Segmented button style. Inactive buttons: `color: var(--sc-color-text-tertiary)`. Active: `color: var(--sc-color-text-primary)`.
 
-## Scroll-reactive backgrounds
+## Header background
 
-Use a separate `.header-bg` child element — never put `opacity` on the host or header itself or all content will disappear.
+Use a separate `.header-bg` child element — never put `opacity` on the host or header itself or all content will disappear. The background always extends below the header's bottom edge via a negative `bottom` value to cover sticky controls beneath it.
 
 ```css
 .header-bg {
-  position: absolute; inset: 0; z-index: -1;
-  background: color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  bottom: -96px; /* extends 96px below header bottom */
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent) 0%,
+    transparent 100%
+  );
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  opacity: 0; transition: opacity 250ms ease; pointer-events: none;
-}
-.header-bg.scrolled { opacity: 1; }
-```
-
-```ts
-@state() private _scrolled = false
-private _onScroll = () => { this._scrolled = window.scrollY >= 120 }
-connectedCallback() {
-  super.connectedCallback()
-  window.addEventListener('scroll', this._onScroll, { passive: true })
-}
-disconnectedCallback() {
-  super.disconnectedCallback()
-  window.removeEventListener('scroll', this._onScroll)
+  mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
+  pointer-events: none;
 }
 ```
 
@@ -161,12 +156,13 @@ Two explicit buttons are industry best practice over a single toggle hit region 
 ```css
 .theme-toggle {
   position: relative; display: flex; align-items: center;
-  background: var(--sc-color-background-subtle); border-radius: 999px; padding: 3px;
+  border-radius: 999px; padding: 3px;
+  /* glass effect applied via sc-header::part(theme-toggle) from external CSS */
 }
 .theme-toggle-thumb {
   position: absolute; left: 3px; width: 28px; height: 28px;
-  border-radius: 50%; background: var(--sc-color-surface-l1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 50%; background: var(--sc-color-surface-l4);
+  box-shadow: var(--sc-shadow-l1);
   transition: transform 250ms ease; pointer-events: none;
 }
 .theme-toggle-thumb.dark { transform: translateX(28px); }
@@ -178,24 +174,121 @@ Two explicit buttons are industry best practice over a single toggle hit region 
 .theme-toggle button.active { color: var(--sc-color-icon-primary); }
 ```
 
-## Theme-reactive image crossfade
-
-Render both light and dark images stacked; dark fades over the light base with CSS opacity transition. Never swap `src` — that causes a flash.
-
-```css
-.image { position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; transition: opacity 250ms ease; }
-.image-dark { opacity: 0; }
-.image-dark.active { opacity: 1; }
-```
-
-Listen for `theme-change` events dispatched by `sc-header` on the component's own element (events bubble and cross shadow DOM when `composed: true`):
+Expose the toggle container as a CSS part so external styles can apply glass effect:
 
 ```ts
-window.addEventListener('theme-change', (e: Event) => {
-  const { theme } = (e as CustomEvent).detail
-  this._theme = theme
-})
+html`<div class="theme-toggle" part="theme-toggle" ...>`
+```
+
+Then in the external SCSS:
+
+```css
+sc-header::part(theme-toggle) {
+  background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+```
+
+## Glass effect utility
+
+A `.sc-glass` utility class is defined in `main.scss` for frosted-glass surfaces. Use it on regular (non-shadow DOM) elements. For shadow DOM elements, use `::part()` with the same values.
+
+```css
+.sc-glass {
+  background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+```
+
+## Sticky platform switch
+
+The platform switch uses pure CSS sticky — no JS needed, no snap. Set `top` to the desired visual gap from the viewport edge (acts as both the sticky threshold and the visual offset). Use `pointer-events: none` on the section container and restore it on the switch itself so the transparent area doesn't block header controls.
+
+```css
+.platform-switch-section {
+  position: sticky;
+  top: 12px; /* desktop: gap from viewport top when stuck */
+  z-index: 101; /* above header z-index: 100 */
+  pointer-events: none;
+}
+.platform-switch-section .platform-switch {
+  pointer-events: auto;
+}
+@media (max-width: 402px) {
+  .platform-switch-section {
+    top: 48px; /* mobile: clears the fixed header height */
+  }
+  .platform-switch {
+    width: 100%;
+  }
+  .platform-switch button {
+    flex: 1;
+  }
+}
+```
+
+## Theme-reactive image swap
+
+Use a single `<img>` element and swap `src` based on `_theme`. Same element = identical sizing, `object-fit`, and `object-position` guaranteed. No stacking, no overlay, no specificity issues.
+
+### Image focal point for bento cards
+
+Always use `object-position: left top` (the `sc-card-image` default) for bento card images. This anchors to the top-left, preventing content from being cropped off the top when the card is shorter than the image's natural height.
+
+Override the horizontal offset per-card with the `--sc-card-object-position` custom property:
+
+```html
+<sc-card-image style="--sc-card-object-position: -16px top">
+```
+
+The breakpoint reset at `≤810px` also applies `left top`, keeping the crop consistent across all screen sizes.
+
+### Section feature images
+
+`sc-section-feature` uses `aspect-ratio` and `height: auto` on the image so it renders at its natural ratio — no clipping. The `.image-wrap` is a flex container to centre the image vertically.
+
+```css
+.image-wrap {
+  flex: 1;
+  min-width: 370px;
+  aspect-ratio: 38 / 35; /* matches 1824×1680px source images */
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+```
+
+Use `aspect-ratio` that exactly matches the source image dimensions to avoid any clipping. For 1824×1680px: GCD is 48, so `38 / 35`. CSS `aspect-ratio` accepts decimal values if needed (e.g. `6 / 5.2`).
+
+```ts
+// In render():
+const src = this.imageSrcDark && this._theme === 'dark' ? this.imageSrcDark : this.imageSrc
+// html`<img src=${src} alt=${this.imageAlt} />`
+```
+
+Listen for `theme-change` events dispatched by `sc-header`:
+
+```ts
+private _onThemeChange = (e: Event) => {
+  this._theme = (e as CustomEvent).detail.theme
+}
+connectedCallback() {
+  super.connectedCallback()
+  this._theme = (document.documentElement.dataset.theme as 'light' | 'dark') ?? 'light'
+  window.addEventListener('theme-change', this._onThemeChange)
+}
+disconnectedCallback() {
+  super.disconnectedCallback()
+  window.removeEventListener('theme-change', this._onThemeChange)
+}
 ```
 
 ## `color-mix()` for opacity without new tokens

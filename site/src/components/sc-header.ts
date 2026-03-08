@@ -68,11 +68,14 @@ export class ScHeader extends LitElement {
 
     .header-bg {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: -96px;
       z-index: -1;
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--sc-color-surface-l3) 50%, transparent) 0%,
+        color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent) 0%,
         transparent 100%
       );
       backdrop-filter: blur(8px);
@@ -157,7 +160,6 @@ export class ScHeader extends LitElement {
       position: relative;
       display: flex;
       align-items: center;
-      background: var(--sc-color-background-subtle);
       border-radius: 999px;
       padding: 3px;
     }
@@ -168,7 +170,7 @@ export class ScHeader extends LitElement {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: var(--sc-color-surface-l1);
+      background: var(--sc-color-surface-l4);
       box-shadow: var(--sc-shadow-l1);
       transition: transform 250ms ease;
       pointer-events: none;
@@ -261,7 +263,7 @@ export class ScHeader extends LitElement {
 
         <div class="trailing">
 
-          <div class="theme-toggle" role="group" aria-label="Theme">
+          <div class="theme-toggle" part="theme-toggle" role="group" aria-label="Theme">
             <span class="theme-toggle-thumb ${this._theme}"></span>
             <button
               class=${this._theme === 'light' ? 'active' : ''}

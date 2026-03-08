@@ -44,16 +44,16 @@
     <!-- Platform switch                                               -->
     <!-- ============================================================ -->
     <div class="platform-switch-section">
-      <div class="platform-switch">
-        <button class="active" data-platform="framer">For Framer</button>
-        <button data-platform="figma">For Figma</button>
+      <div class="platform-switch sc-glass">
+        <button data-platform="framer">For Framer</button>
+        <button class="active" data-platform="figma">For Figma</button>
       </div>
     </div>
 
     <!-- ============================================================ -->
     <!-- Framer Content                                                -->
     <!-- ============================================================ -->
-    <div id="content-framer" class="platform-content active" aria-label="Framer features">
+    <div id="content-framer" class="platform-content" aria-label="Framer features">
 
       <sc-section-bento>
 
@@ -125,57 +125,87 @@
     <!-- ============================================================ -->
     <!-- Figma Content                                                 -->
     <!-- ============================================================ -->
-    <div id="content-figma" class="platform-content" aria-label="Figma features">
+    <div id="content-figma" class="platform-content active" aria-label="Figma features">
 
       <sc-section-bento>
 
-        <sc-card-image slot="card-1" variant="fill" image-alt="Scale components in Figma">
+        <sc-card-image slot="card-1" variant="fill"
+          image-src="/images/figma/sc-image-figma-bento-components-light.png"
+          image-src-dark="/images/figma/sc-image-figma-bento-components-dark.png"
+          image-alt="Scale components in Figma"
+          style="--sc-card-object-position: -16px top">
           <h4 slot="heading">118 Components. 41,942 possibilities.</h4>
           <p slot="description">Web and App components, Properties and Variants with thousands of possibilities.</p>
         </sc-card-image>
 
-        <sc-card-image slot="card-2" variant="fill" image-alt="Scale variables and styles">
+        <sc-card-image slot="card-2" variant="fill"
+          image-src="/images/figma/sc-image-figma-bento-variables-light.png"
+          image-src-dark="/images/figma/sc-image-figma-bento-variables-dark.png"
+          image-alt="Scale variables and styles"
+          style="--sc-card-object-position: -16px top">
           <h4 slot="heading">720 Variables &amp; Styles</h4>
           <p slot="description">Semantic Color and Type Variables, Spacing, Border and Elevation.</p>
         </sc-card-image>
 
-        <sc-card-image slot="card-3" variant="fill" image-alt="Scale icon library">
+        <sc-card-image slot="card-3" variant="fill"
+          image-src="/images/figma/sc-image-figma-bento-icons-light.png"
+          image-src-dark="/images/figma/sc-image-figma-bento-icons-dark.png"
+          image-alt="Scale icon library"
+          style="--sc-card-object-position: -16px top">
           <h4 slot="heading">936 Icons</h4>
           <p slot="description">Feather and status icons at 16, 24, and 32px.</p>
         </sc-card-image>
 
-        <sc-card-image slot="card-4" variant="fill" image-alt="Scale section components">
+        <sc-card-image slot="card-4" variant="fill"
+          image-src="/images/figma/sc-image-figma-bento-modules-light.png"
+          image-src-dark="/images/figma/sc-image-figma-bento-modules-dark.png"
+          image-alt="Scale section components">
           <h4 slot="heading">22 Sections. 14,636 possibilities.</h4>
           <p slot="description">Responsive Hero, Feature, Logo, Pricing, CTA, FAQ and Carousel modules.</p>
         </sc-card-image>
 
       </sc-section-bento>
 
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-liquid-glass-light.png"
+        image-src-dark="/images/figma/sc-image-figma-feature-liquid-glass-dark.png"
+        image-alt="Liquid Glass components">
         <h2 slot="heading">Liquid Glass Components</h2>
         <p slot="subtext">Design for Apple's latest operating system with 14 new Liquid Glass components. Use custom icons instead of Apple's SF Symbols.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-scp-plugin.png"
+        image-alt="Scale Color Variable Picker plugin">
         <h2 slot="heading">Color Variable Picker</h2>
         <p slot="subtext">Scale's first Figma plugin. Helps you find the right semantic color variable when designing. Learn Scale's semantic spec as you go.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-color-variables.png"
+        image-alt="Scale color variables in Figma">
         <h2 slot="heading">Global Semantic Color</h2>
         <p slot="subtext">Use color in a meaningful way across your projects, toggle automatically between Light and Dark modes and watch updates ripple across every screen instantly.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-type-variables.png"
+        image-alt="Scale type variables in Figma">
         <h2 slot="heading">Responsive Typography</h2>
         <p slot="subtext">Perfect hierarchy, zero math. Our t-shirt sized type scale uses fluid responsiveness to adapt flawlessly from Desktop to Mobile. No manual breakpoint tweaks required.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-components-light.png"
+        image-src-dark="/images/figma/sc-image-figma-feature-components-dark.png"
+        image-alt="Scale component library in Figma">
         <h2 slot="heading">Smart Component Library</h2>
         <p slot="subtext">Don't build from scratch, just configure. Access a robust library pre-wired with variants, variables and properties. Simply drag, drop, and toggle the props to match your needs.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature
+        image-src="/images/figma/sc-image-figma-feature-modules-light.png"
+        image-src-dark="/images/figma/sc-image-figma-feature-modules-dark.png"
+        image-alt="Scale section modules in Figma">
         <h2 slot="heading">Adaptive Section Blocks</h2>
         <p slot="subtext">Drag-and-drop sections that instantly inherit your global theme and resize perfectly for every device. Edit the master component once, and see it update everywhere.</p>
       </sc-section-feature>
-      <sc-section-feature>
+      <sc-section-feature style="display: none">
         <h2 slot="heading">Launch-Ready Templates</h2>
         <p slot="subtext">Skip "blank canvas" paralysis. Start with professional page structures. Mix sections, apply your brand, and finish your site in a fraction of the time.</p>
       </sc-section-feature>

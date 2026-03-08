@@ -40,11 +40,24 @@ Output goes to `site/dist/`.
 
 `site/index.html` — the main marketing/sales page for Scale. Uses:
 
-- `sc-header` — fixed header with scroll-reactive frosted-glass background, animated pill theme toggle (light/dark), and mobile drawer
-- `sc-hero` — full-width hero with badge, heading, CTAs, and dual-image crossfade (light ↔ dark)
+- `sc-header` — fixed header with always-on frosted-glass background gradient (extends 96px below header bounds), animated pill theme toggle (light/dark) with glass effect via `::part(theme-toggle)`, and responsive mobile layout
+- `sc-hero` — full-width hero with badge, heading, CTAs, and theme-reactive image swap (light ↔ dark)
 - `sc-button`, `sc-button-icon`, `sc-logo`, `sc-input`, `sc-accordion` — throughout sections
-- Platform switch (Framer / Figma) — plain JS, no framework
+- Platform switch (Framer / Figma) — sticky to top of page with pure CSS `position: sticky` (no JS snap), frosted-glass background via `.sc-glass`, full-width on mobile
+- Figma feature sections — all six `sc-section-feature` components now have images; theme-reactive where applicable
 - Pricing cards and FAQ accordion
+
+### `.sc-glass` utility
+
+`main.scss` exports a `.sc-glass` utility class for frosted-glass surfaces on regular (non-Shadow DOM) elements:
+
+```css
+background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+```
+
+For Shadow DOM elements, use `::part()` with the same values (e.g. `sc-header::part(theme-toggle)` in `styles.scss`).
 
 ## Components
 
@@ -67,7 +80,7 @@ Output goes to `site/dist/`.
 | Component | Description |
 |---|---|
 | `sc-header` | Fixed header with scroll-reactive frosted-glass background, animated pill theme toggle, mobile drawer |
-| `sc-hero` | Full-width hero with badge, heading, CTAs, dual-image crossfade (light ↔ dark) |
+| `sc-hero` | Full-width hero with badge, heading, CTAs, theme-reactive image swap (light ↔ dark) |
 | `sc-footer` | Site footer with logo, copyright, and licence link |
 | `sc-row` | Horizontal layout row wrapper |
 
@@ -76,7 +89,7 @@ Output goes to `site/dist/`.
 | Component | Description |
 |---|---|
 | `sc-section-content` | Centred heading + subtext section |
-| `sc-section-feature` | Side-by-side content + image layout (supports `reverse` variant) |
+| `sc-section-feature` | Side-by-side content + image layout (supports `reverse` variant); images use `aspect-ratio: 38/35` matching 1824×1680px source images, `height: auto` to avoid clipping |
 | `sc-section-bento` | Bento-style grid section |
 | `sc-section-pricing` | 3-column pricing card grid |
 | `sc-section-faq` | FAQ section with accordion |

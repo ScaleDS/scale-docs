@@ -50,25 +50,14 @@ export class ScCardImage extends LitElement {
       aspect-ratio: 16 / 9;
       flex-shrink: 0;
       position: relative;
-      background: var(--sc-color-background-neutral);
     }
 
     :host([variant='default']) .image-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--sc-card-object-position, left top);
       display: block;
-    }
-
-    .image-dark {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 250ms ease;
-    }
-
-    .image-dark.active {
-      opacity: 1;
     }
 
     :host([variant='default']) .content {
@@ -93,29 +82,43 @@ export class ScCardImage extends LitElement {
       gap: var(--sc-space-s);
     }
 
+    :host([variant='fill']) .card {
+      padding-bottom: var(--sc-space-xl);
+      box-sizing: border-box;
+    }
+
     :host([variant='fill']) .image-wrap {
       flex: 1;
       min-height: 0;
       position: relative;
-      background: var(--sc-color-background-neutral);
+      display: flex;
+      flex-direction: column;
     }
 
     :host([variant='fill']) .image-wrap img {
+      flex: 1;
+      min-height: 0;
       width: 100%;
-      height: 100%;
       object-fit: cover;
+      object-position: var(--sc-card-object-position, left top);
       display: block;
+    }
+
+    @media (max-width: 810px) {
+      :host([variant='default']) .image-wrap img,
+      :host([variant='fill']) .image-wrap img {
+        object-position: left top;
+      }
     }
 
   `
 
   render() {
+    const src = this.imageSrcDark && this._theme === 'dark' ? this.imageSrcDark : this.imageSrc
+
     const imageWrap = html`
       <div class="image-wrap">
-        <img src=${this.imageSrc} alt=${this.imageAlt} />
-        ${this.imageSrcDark ? html`
-          <img class="image-dark ${this._theme === 'dark' ? 'active' : ''}" src=${this.imageSrcDark} alt=${this.imageAlt} />
-        ` : null}
+        ${src ? html`<img src=${src} alt=${this.imageAlt} />` : null}
       </div>
     `
 

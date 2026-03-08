@@ -60,15 +60,6 @@ export class ScHero extends LitElement {
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      transition: opacity 250ms ease;
-    }
-
-    .image-dark {
-      opacity: 0;
-    }
-
-    .image-dark.active {
-      opacity: 1;
     }
 
     /* ---- Bottom gradient overlay ---- */
@@ -176,10 +167,7 @@ export class ScHero extends LitElement {
   render() {
     return html`
       ${this.imageSrc ? html`
-        <img class="image" src=${this.imageSrc} alt=${this.imageAlt} />
-        ${this.imageSrcDark ? html`
-          <img class="image image-dark ${this._theme === 'dark' ? 'active' : ''}" src=${this.imageSrcDark} alt=${this.imageAlt} />
-        ` : null}
+        <img class="image" src=${this.imageSrcDark && this._theme === 'dark' ? this.imageSrcDark : this.imageSrc} alt=${this.imageAlt} />
         <div class="gradient"></div>
       ` : null}
 

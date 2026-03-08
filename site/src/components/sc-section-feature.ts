@@ -79,29 +79,17 @@ export class ScSectionFeature extends LitElement {
     .image-wrap {
       flex: 1;
       min-width: 370px;
-      position: relative;
-      aspect-ratio: 1;
+      aspect-ratio: 38 / 35;
       border-radius: 16px;
       overflow: hidden;
-      background: var(--sc-color-background-neutral);
+      display: flex;
+      align-items: center;
     }
 
     .image-wrap img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-    }
-
-    .image-dark {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 250ms ease;
-    }
-
-    .image-dark.active {
-      opacity: 1;
     }
 
     /* ---- Responsive ---- */
@@ -137,12 +125,11 @@ export class ScSectionFeature extends LitElement {
   `
 
   render() {
+    const src = this.imageSrcDark && this._theme === 'dark' ? this.imageSrcDark : this.imageSrc
+
     const imageCol = html`
       <div class="image-wrap">
-        ${this.imageSrc ? html`<img src=${this.imageSrc} alt=${this.imageAlt} />` : null}
-        ${this.imageSrcDark ? html`
-          <img class="image-dark ${this._theme === 'dark' ? 'active' : ''}" src=${this.imageSrcDark} alt=${this.imageAlt} />
-        ` : null}
+        ${src ? html`<img src=${src} alt=${this.imageAlt} />` : null}
       </div>
     `
 
