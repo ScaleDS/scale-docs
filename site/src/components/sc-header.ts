@@ -72,7 +72,7 @@ export class ScHeader extends LitElement {
       top: 0;
       left: 0;
       right: 0;
-      bottom: -96px;
+      bottom: var(--sc-header-bg-bottom, -96px);
       z-index: -1;
       transition: bottom 300ms ease;
       background: linear-gradient(
@@ -98,6 +98,12 @@ export class ScHeader extends LitElement {
       display: flex;
       align-items: center;
       flex: 1;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
     }
 
     .nav {
@@ -168,6 +174,8 @@ export class ScHeader extends LitElement {
       align-items: center;
       border-radius: 999px;
       padding: 3px;
+      border: none;
+      cursor: pointer;
     }
 
     .theme-toggle-thumb {
@@ -186,7 +194,7 @@ export class ScHeader extends LitElement {
       transform: translateX(28px);
     }
 
-    .theme-toggle button {
+    .theme-toggle-icon {
       position: relative;
       z-index: 1;
       display: flex;
@@ -194,21 +202,17 @@ export class ScHeader extends LitElement {
       justify-content: center;
       width: 28px;
       height: 28px;
-      border: none;
-      border-radius: 50%;
-      background: transparent;
-      cursor: pointer;
       color: var(--sc-color-icon-subtle);
       transition: color 150ms ease;
     }
 
-    .theme-toggle button svg {
+    .theme-toggle-icon svg {
       display: block;
       width: 14px;
       height: 14px;
     }
 
-    .theme-toggle button.active {
+    .theme-toggle-icon.active {
       color: var(--sc-color-icon-primary);
     }
 
@@ -258,32 +262,26 @@ export class ScHeader extends LitElement {
         <div class="header-bg"></div>
 
         <div class="leading">
-          <sc-logo size="m" ?hide-text=${this._mobile}></sc-logo>
+          <a class="logo-link" href="/">
+            <sc-logo size="m" ?hide-text=${this._mobile}></sc-logo>
+          </a>
         </div>
-
-        <nav class="nav" aria-label="Main">
-          ${this.navLinks.map(link => html`
-            <a class="nav-link" href=${link.href}>${link.label}</a>
-          `)}
-        </nav>
 
         <div class="trailing">
 
-          <div class="theme-toggle" part="theme-toggle" role="group" aria-label="Theme">
+          <button
+            class="theme-toggle"
+            part="theme-toggle"
+            role="switch"
+            aria-checked=${this._theme === 'dark'}
+            aria-label="Toggle theme"
+            title=${this._theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            @click=${() => this._setTheme(this._theme === 'light' ? 'dark' : 'light')}
+          >
             <span class="theme-toggle-thumb ${this._theme}"></span>
-            <button
-              class=${this._theme === 'light' ? 'active' : ''}
-              @click=${() => this._setTheme('light')}
-              aria-pressed=${this._theme === 'light'}
-              title="Light mode"
-            >${this._sunIcon()}</button>
-            <button
-              class=${this._theme === 'dark' ? 'active' : ''}
-              @click=${() => this._setTheme('dark')}
-              aria-pressed=${this._theme === 'dark'}
-              title="Dark mode"
-            >${this._moonIcon()}</button>
-          </div>
+            <span class="theme-toggle-icon ${this._theme === 'light' ? 'active' : ''}">${this._sunIcon()}</span>
+            <span class="theme-toggle-icon ${this._theme === 'dark' ? 'active' : ''}">${this._moonIcon()}</span>
+          </button>
 
           ${this.showSearch ? html`
             <sc-button-icon type="tertiary" size="l" icon="search" label="Search"></sc-button-icon>
@@ -298,13 +296,19 @@ export class ScHeader extends LitElement {
             ` : null}
             ${this.primaryLabel ? html`
               <sc-button type="primary" size="m"
-                @click=${() => this.primaryHref && (window.location.href = this.primaryHref)}>
+                @click=${() => this.primaryHref && window.open(this.primaryHref, '_blank', 'noopener,noreferrer')}>
                 ${this.primaryLabel}
               </sc-button>
             ` : null}
           </div>
 
         </div>
+
+        <nav class="nav" aria-label="Main">
+          ${this.navLinks.map(link => html`
+            <a class="nav-link" href=${link.href}>${link.label}</a>
+          `)}
+        </nav>
       </header>
     `
   }

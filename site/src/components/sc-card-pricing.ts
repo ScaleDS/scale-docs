@@ -48,6 +48,11 @@ export class ScCardPricing extends LitElement {
       padding: 0 var(--sc-space-2xl) var(--sc-space-2xl);
       --sc-button-width: 100%;
     }
+
+    .footer ::slotted(a) {
+      display: block;
+      text-decoration: none;
+    }
   `
 
   render() {

@@ -188,14 +188,14 @@ export class ScHero extends LitElement {
               ${this.primaryLabel ? html`
                 <sc-button type="secondary" size="l"
                   leading-icon=${this.primaryLeadingIcon || ''}
-                  @click=${() => this.primaryHref && (window.location.href = this.primaryHref)}>
+                  @click=${() => this.primaryHref && window.open(this.primaryHref, '_blank', 'noopener,noreferrer')}>
                   ${this.primaryLabel}
                 </sc-button>
               ` : null}
               ${this.secondaryLabel ? html`
                 <sc-button type="secondary" size="l"
                   leading-icon=${this.secondaryLeadingIcon || ''}
-                  @click=${() => this.secondaryHref && (window.location.href = this.secondaryHref)}>
+                  @click=${() => this.secondaryHref && window.open(this.secondaryHref, '_blank', 'noopener,noreferrer')}>
                   ${this.secondaryLabel}
                 </sc-button>
               ` : null}

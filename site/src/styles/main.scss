@@ -158,3 +158,30 @@ pre {
   background: var(--sc-color-background-brand);
   color: var(--sc-color-text-primary-inverse);
 }
+
+/* ---- Content layout ---- */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sc-space-xl);
+}
+
+/* ---- Licence page ---- */
+
+[data-page='licence'] sc-header {
+  --sc-header-bg-bottom: 0px;
+}
+
+[data-page='licence'] section {
+  padding-top: 160px;
+  padding-bottom: 32px;
+
+  @media (max-width: 810px) {
+    padding-top: 128px;
+  }
+
+  @media (max-width: 402px) {
+    padding-top: 96px;
+  }
+}

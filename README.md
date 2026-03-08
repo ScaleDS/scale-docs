@@ -1,20 +1,18 @@
 # Scale Design System — Docs & Preview Site
 
-A site for the **Scale** design system, built for Figma and Framer users.
+Marketing and documentation site for the **Scale** design system, built for Figma and Framer users.
 
-## What's in this repo
+## Repo structure
 
 | Folder | Purpose |
 |---|---|
-| `site/` | Vite + Lit + TypeScript site with all components and previews |
-| `site/src/components/` | Lit web components (`sc-button`, `sc-input`, `sc-toggle`, etc.) |
+| `site/` | Vite + Lit + TypeScript site |
+| `site/src/components/` | Lit web components (`sc-button`, `sc-input`, etc.) |
 | `site/src/styles/` | SCSS design tokens (`--sc-*` CSS custom properties) |
-| `site/src/styles/json/` | Upstream design token JSON source files |
-| `site/public/` | Static assets served at root URL (hero images, etc.) |
-| `site/components/` | Interactive preview pages, one per component |
+| `site/public/` | Static assets served at root URL |
+| `site/components/` | Interactive component preview pages |
 | `site-md/` | Markdown reference for foundations and design decisions |
 | `context/` | AI builder context and skill files |
-| `context/framer/` | Framer template submission and DS checklist docs |
 | `pencil/` | Pencil design files (`.pen`) |
 
 ## Running locally
@@ -36,35 +34,16 @@ npm run build
 
 Output goes to `site/dist/`.
 
-## Home page
+## Pages
 
-`site/index.html` — the main marketing/sales page for Scale. Uses:
-
-- `sc-header` — fixed header with always-on frosted-glass background gradient (extends 96px below header bounds), animated pill theme toggle (light/dark) with glass effect via `::part(theme-toggle)`, and responsive mobile layout
-- `sc-hero` — full-width hero with badge, heading, CTAs, and theme-reactive image swap (light ↔ dark)
-- `sc-button`, `sc-button-icon`, `sc-logo`, `sc-input`, `sc-accordion` — throughout sections
-- Platform switch (Framer / Figma) — sticky to top of page with pure CSS `position: sticky` (no JS snap), frosted-glass background via `.sc-glass`, full-width on mobile; **defaults to Framer**
-- Framer bento grid — all 4 cards have images (`/images/framer/sc-image-framer-bento-*.png`)
-- Framer feature sections — all 5 `sc-section-feature` components have images (`/images/framer/sc-image-framer-feature-*.png`); light-only (no dark variants)
-- Figma bento grid — all 4 cards have images (`/images/figma/sc-image-figma-bento-*.png`)
-- Figma feature sections — all 6 `sc-section-feature` components have images; theme-reactive where applicable
-- Pricing cards and FAQ accordion
-
-### `.sc-glass` utility
-
-`main.scss` exports a `.sc-glass` utility class for frosted-glass surfaces on regular (non-Shadow DOM) elements:
-
-```css
-background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
-```
-
-For Shadow DOM elements, use `::part()` with the same values (e.g. `sc-header::part(theme-toggle)` in `styles.scss`).
+| Page | File |
+|---|---|
+| Home / marketing | `site/index.html` |
+| Licence Agreement | `site/licence-agreement.html` |
 
 ## Components
 
-### UI components
+### UI
 
 | Component | Preview |
 |---|---|
@@ -73,48 +52,24 @@ For Shadow DOM elements, use `::part()` with the same values (e.g. `sc-header::p
 | `sc-toggle` | `/components/sc-toggle.html` |
 | `sc-badge` | `/components/sc-badge.html` |
 | `sc-accordion` | `/components/sc-accordion.html` |
-| `sc-button-icon` | *(no standalone preview)* |
-| `sc-button-pill` | *(no standalone preview)* |
-| `sc-logo` | *(no standalone preview)* |
-| `sc-divider` | *(no standalone preview)* |
+| `sc-button-icon`, `sc-button-pill`, `sc-logo`, `sc-divider` | *(no standalone preview)* |
 
-### Page layout components
+### Layout & sections
 
 | Component | Description |
 |---|---|
-| `sc-header` | Fixed header with scroll-reactive frosted-glass background, animated pill theme toggle, mobile drawer |
-| `sc-hero` | Full-width hero with badge, heading, CTAs, theme-reactive image swap (light ↔ dark) |
-| `sc-footer` | Site footer with logo, copyright, and licence link |
+| `sc-header` | Fixed header with frosted-glass background, animated theme toggle, mobile drawer |
+| `sc-hero` | Full-width hero with badge, CTAs, theme-reactive image |
+| `sc-footer` | Footer with logo, copyright, and licence link |
 | `sc-row` | Horizontal layout row wrapper |
-
-### Section components
-
-| Component | Description |
-|---|---|
-| `sc-section-content` | Centred heading + subtext section |
-| `sc-section-feature` | Side-by-side content + image layout (supports `reverse` variant); images use `aspect-ratio: 38/35` matching 1824×1680px source images, `height: auto` to avoid clipping |
-| `sc-section-bento` | Bento-style grid section |
+| `sc-section-content` | Centred heading + subtext |
+| `sc-section-feature` | Side-by-side content + image (supports `reverse`) |
+| `sc-section-bento` | Bento grid section |
 | `sc-section-pricing` | 3-column pricing card grid |
-| `sc-section-faq` | FAQ section with accordion |
-| `sc-section-signup` | Email signup card with heading and inline form |
-
-### Card components
-
-| Component | Description |
-|---|---|
-| `sc-card-image` | Image card used in bento and feature grids; supports `--sc-card-object-fit` and `--sc-card-object-position` CSS custom properties |
-| `sc-card-pricing` | Pricing tier card with header, feature rows, and CTA footer |
-
-## Responsive design
-
-All section and layout components are fully responsive with two breakpoints:
-
-| Breakpoint | Value | Behaviour |
-|---|---|---|
-| Tablet | `max-width: 810px` | Multi-column → single column; form/card stacking |
-| Mobile | `max-width: 402px` | Full-width buttons and inputs; text left-aligned; reduced padding |
-
-All spacing (padding, margin, gap) uses `--sc-space-*` CSS custom property tokens — never raw `px` values.
+| `sc-section-faq` | FAQ accordion section |
+| `sc-section-signup` | Email signup card with MailerLite integration |
+| `sc-card-image` | Image card for bento and feature grids |
+| `sc-card-pricing` | Pricing tier card |
 
 ## Tech
 
@@ -122,3 +77,4 @@ All spacing (padding, margin, gap) uses `--sc-space-*` CSS custom property token
 - **Lit** — web components with Shadow DOM
 - **TypeScript** — component authoring
 - **SCSS** — design token definitions
+- **MailerLite** — email signup via REST API

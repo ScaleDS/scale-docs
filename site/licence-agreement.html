@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-page="licence">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scale — Design System for Figma &amp; Framer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/licence-agreement.js"></script>
+    <style>body { opacity: 0; transition: opacity 250ms ease; }</style>
+  </head>
+  <body>
+
+    <!-- ============================================================ -->
+    <!-- Header                                                        -->
+    <!-- ============================================================ -->
+    <sc-header
+      primary-label="Buy now"
+      primary-href="https://christopherdeane.gumroad.com/l/scale"
+    ></sc-header>
+
+    <!-- ============================================================ -->
+    <!-- Hero                                                          -->
+    <!-- ============================================================ -->
+    <section>
+      <div class="container" style="max-width: 1168px; padding: 0 16px;">
+        <div class="content">
+          <h1>Licence Agreement</h1>
+          <p>By purchasing a Figma, Framer or Figma and Framer licence of Scale, you agree to the terms of this licence agreement.</p>
+
+          <h4>What you are not permitted to do</h4>
+          <ul>
+            <li>Resell, sub-licence or re-distribute Scale as a premium design system under its name, or any other name</li>
+            <li>Create versions of, or convert Scale for use in any other piece of design software that has commercial or non-commercial intent, including any no-code tools or any code based framework</li>
+            <li>Turn Scale into or use it in UI Kits that you intend to make available as commercial or non-commercial products</li>
+            <li>Use Scale in its entirety inside a client project — it has to be used as a library or resource that stays with you</li>
+            <li>You cannot publish Scale for your team members to use, if you require team usage, contact me on the email below</li>
+            <li>The Framer version can't be re-sold as a Design System template</li>
+          </ul>
+
+          <h4>What you are permitted to do</h4>
+          <ul>
+            <li>Use Scale in unlimited personal or commercial projects as a library or project starter for yourself or your clients. Project examples are Websites, Web Apps, Native Apps (iOS/Android) and SaaS Applications</li>
+            <li>The Framer version can be used to create personal or client sites — if you would like to use it to create templates, reach out for custom pricing</li>
+            <li>Use Scale as a baseline for an internal, non-commercial design system that you embellish on to become your own</li>
+          </ul>
+
+          <h4>Enforcement and Liability</h4>
+          <p>Scale Design System is a product of Scale Pty Ltd and Christopher Deane. You are only allowed to use Scale within the limitations of this licence agreement. Scale Pty Ltd and Christopher Deane reserve the right to pursue legal action against you, the company you run or own, or any client that obtains a free version of Scale.</p>
+          <p>Any unauthorised use will result in liabilities such as damages, cost or any other losses resulting from your mis-use of Scale.</p>
+
+          <h4>Questions?</h4>
+          <p>If you have any questions then reach out at <a href="mailto:info@scaledesignsystem.com">info@scaledesignsystem.com</a></p>
+          <p>If you're ready to design better and deliver faster, buy a licence and welcome to Scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Signup                                                        -->
+    <!-- ============================================================ -->
+    <sc-section-signup id="signup">
+        <span slot="heading">Sign up for updates</span>
+        <span slot="subtext">Stay up to date with releases and other related Scale news.</span>
+        <sc-input slot="input" id="signupEmail" label="Email address" placeholder="you@example.com" type="email" required></sc-input>
+        <sc-button slot="action" type="primary">Subscribe</sc-button>
+      </sc-section-signup>
+
+    <!-- ============================================================ -->
+    <!-- Footer                                                        -->
+    <!-- ============================================================ -->
+    <sc-footer
+      copyright="©2020 - 2026 Christopher Deane. All rights reserved."
+      licence-label="Licence Agreement"
+      licence-href="/licence-agreement.html"
+    ></sc-footer>

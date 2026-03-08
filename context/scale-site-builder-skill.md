@@ -1,357 +1,118 @@
-# Scale site builder
+---
+name: scale-site-builder
+description: >
+  Build and modify the Scale design system docs site. Use when creating Lit
+  components, editing pages, writing page scripts, or working with tokens,
+  styles, or images for this project.
+allowed-tools: Read, Edit, Write, Glob, Grep, Bash
+---
 
-This project is for a design system called Scale, used by Figma and Framer users.
+## Project map
 
-## Sources
+| Path | Purpose |
+|---|---|
+| `site/index.html` | Home/marketing page |
+| `site/licence-agreement.html` | Licence page |
+| `site/src/main.ts` | Registers all Lit components |
+| `site/src/components/sc-*.ts` | Lit web components |
+| `site/src/styles/main.scss` | Global styles, design tokens, utility classes |
+| `site/src/index.js` | Home page script |
+| `site/src/licence-agreement.js` | Licence page script |
+| `site/src/signup.js` | Shared MailerLite subscribe logic — `setupSignup()` |
+| `site/public/images/` | Static images — reference as `/images/…` |
+| `site/components/sc-*.html` | Component preview pages |
 
-- **Design** — Figma components (use Figma MCP to read anatomy, variants, properties, token values)
-- **CSS tokens** — `site/src/styles/` — map Figma variables to `--sc-*` equivalents
-- **Token JSON source** — `site/src/styles/json/` — upstream design token JSON files
-- **Foundations reference** — `site-md/foundations/`
-- **Framer context** — `context/framer/` — Framer template and DS submission docs
-- **Static assets** — `site/public/` — images and other files served at root URL (e.g. `/images/hero/…`)
+Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 
-## Framework
+---
 
-**Vite + Lit + TypeScript** — static site, no framework.
+## Rules
 
-- Entry point: `site/index.html`
-- Components: `site/src/components/` — one Lit web component per file
-- Styles: `site/src/styles/` — SCSS design tokens
-- Component registration: `site/src/main.ts`
-- Component previews: `site/components/` — one HTML file per component (e.g. `sc-button.html`)
-- Build output: `dist/` (deployed to GitHub Pages)
+**Tokens**
+- All spacing, colour, and type values use `--sc-*` CSS custom properties. Never hardcode.
+- `--sc-border-width-s` resolves to `0` — use `1px` directly.
+- `--sc-color-background-primary` inverts in dark mode — for elements that must stay light use `--sc-color-surface-l1`.
 
-Run locally: `cd site && npm run dev`
-Build: `cd site && npm run build`
+**Lit components**
+- `static styles` uses Lit's `css` tag — plain CSS only, no SCSS.
+- Variants styled with `:host([prop='value'])` selectors.
+- `@property({ type: Boolean, reflect: true })` uses attribute *presence* — `show-label="false"` sets it `true`. To set false, omit the attribute and set via JS.
+- Boolean template bindings: `?attr=${bool}`, never the string `"false"`.
 
-## Creating Lit components
-
-### Naming
-
-- File: `sc-{name}.ts` — Tag: `<sc-{name}>` — Class: `Sc{Name}`
-
-### Structure
-
-```ts
-import { LitElement, html, css } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-
-@customElement('sc-{name}')
-export class Sc{Name} extends LitElement {
-  @property({ reflect: true }) propName = 'default'
-
-  static styles = css`...`
-
-  render() {
-    return html`...`
+**Shadow DOM**
+- `--sc-*` tokens inherit through Shadow DOM — always available inside components.
+- External JS cannot reach inside Shadow DOM. Delegate methods on the host element:
+  ```ts
+  reportValidity(): boolean {
+    return (this.shadowRoot!.querySelector('input') as HTMLInputElement).reportValidity()
   }
-}
-```
+  ```
+- Pass-through properties (`type`, `required`) must be declared as `@property()` and bound in `render()`.
+- Style Shadow DOM elements from outside via `part="name"` → `::part(name)` in SCSS.
 
-### Styling rules
+**Focus rings**
+- Never transition `border-width` — it triggers layout recalculation and flickers. Use `box-shadow` instead:
+  ```css
+  .field { border: 1px solid var(--sc-color-border-primary); transition: border-color 150ms ease, box-shadow 150ms ease; }
+  .field:focus-within { border-color: var(--sc-color-border-selected); box-shadow: 0 0 0 1px var(--sc-color-border-selected); }
+  ```
 
-- Use CSS custom properties from global SCSS tokens — they inherit through Shadow DOM.
-- Style variants with `:host([prop='value'])` selectors, e.g. `:host([size='l']) button { ... }`.
-- No SCSS inside Lit components — `static styles` is plain CSS via Lit's `css` tag.
-- Never hardcode colours, spacing, or type values — always use `--sc-*` tokens.
+**FOUC prevention**
+- `body { opacity: 0; transition: opacity 250ms ease; }` must be an inline `<style>` in each HTML page's `<head>` — not in `main.scss`. Reveal with `document.body.style.opacity = '1'` only after all custom elements on the page are defined.
 
-### Workflow (Figma → component)
+**Images**
+- Never put images in `site/src/assets/` for HTML attribute use — always `site/public/images/`.
+- Naming: `sc-image-{platform}-{section}-{variant}-{theme}.png`
+- Always use `image-src` + `image-src-dark` on `sc-card-image` / `sc-section-feature`. Never inline `<img src>`.
 
-1. Use Figma MCP to read anatomy, variants, properties, and token values
-2. Map Figma variables to `--sc-*` CSS custom properties
-3. Create `site/src/components/sc-{name}.ts` with all variants, sizes, and states
-4. Register in `site/src/main.ts`: `import './components/sc-{name}'`
-5. Create preview at `site/components/sc-{name}.html`
+**External links**
+- Open in new tab: `window.open(url, '_blank', 'noopener,noreferrer')` in component handlers.
+- Gumroad purchase URL: `https://christopherdeane.gumroad.com/l/scale`
 
-### Static assets
+**Page-specific styles**
+- Add `data-page="pagename"` on `<html>` and scope overrides in `main.scss` with `[data-page='pagename']`.
 
-Images and other static files go in `site/public/` — they're served verbatim at the root URL and are not processed by Vite. Reference them as absolute paths (e.g. `/images/hero/filename.jpg`). Do **not** put images in `site/src/assets/` unless they are imported directly in TypeScript — string attributes in HTML cannot be resolved by Vite.
+---
 
-### Icons
+## Workflows
 
-Feather icons via `feather-icons` package. Render as inline SVGs; size via CSS per component size.
+### Add a new Lit component
 
-## Preview pages
+1. Read Figma component for anatomy, variants, props, token values.
+2. Create `site/src/components/sc-{name}.ts` with `@customElement`, `@property`, `static styles`, `render()`, and `declare global` block.
+3. Register in `site/src/main.ts`: `import './components/sc-{name}'`
+4. Create preview at `site/components/sc-{name}.html`.
 
-Every preview page follows a standard canvas + sidebar layout.
+### Add a new page
 
-### Layout
+1. Create `site/{page-name}.html` with `data-page="{page-name}"` on `<html>`.
+2. Add inline `<style>body { opacity: 0; transition: opacity 250ms ease; }</style>` in `<head>`.
+3. Load `main.ts` and a page-specific `{page-name}.js` as `type="module"` scripts.
+4. In `{page-name}.js`: import shared modules, call `setupSignup()` if needed, reveal page after all elements are defined.
+5. Add page-scoped style overrides in `main.scss` under `[data-page='{page-name}']`.
 
-`grid-template-columns: 1fr 280px`, `height: 100vh`, `overflow: hidden`.
+---
 
-- **Canvas** — `background: var(--sc-color-background-subtle)`, flex-centered.
-- **Sidebar** — `background: var(--sc-color-surface-l1)`, `border-left: 1px solid var(--sc-color-border-secondary)`, `padding: 1.5rem`, `gap: 1.25rem` column flex.
+## Component capabilities
 
-### Controls
+| Component | Key props / slots |
+|---|---|
+| `sc-header` | `primary-label`, `primary-href`; `--sc-header-bg-bottom` controls gradient height; `::part(theme-toggle)` for glass effect |
+| `sc-hero` | `primary-label`, `primary-href`, `secondary-label`, `secondary-href`, `image-src`, `image-src-dark` |
+| `sc-button` | `type` (primary/secondary/tertiary), `size` (l/m/s), `disabled`; `--sc-button-width` for full-width; no `href` — wrap in `<a>` and add `::slotted(a) { display: block; text-decoration: none; }` to shadow CSS |
+| `sc-input` | `label`, `placeholder`, `value`, `type`, `required`, `state` (default/negative/positive/disabled), `show-label`, `show-help-text`, `leading-icon`, `trailing-icon`; method `reportValidity()` |
+| `sc-section-content` | `align` (center/left) |
+| `sc-section-feature` | `reverse`; `image-src`, `image-src-dark`, `image-alt`; use `aspect-ratio: 38/35` for 1824×1680px images |
+| `sc-card-image` | `image-src`, `image-src-dark`; `--sc-card-object-fit`, `--sc-card-object-position` |
+| `sc-card-pricing` | slots: `heading`, `price`, `features`, `actions` |
+| `sc-section-signup` | requires `id="signup"` for `setupSignup()`; slots: `heading`, `subtext`, `input`, `action` |
+| `sc-footer` | `copyright`, `licence-label`, `licence-href` |
 
-All controls use `<sc-input>` with a `label` attribute — no separate `<label>` tags.
+---
 
-**Text inputs** — `<sc-input id="..." label="X" value="...">`.
+## Tokens quick reference
 
-**Select controls** — `<sc-input>` as visual display, native `<select>` overlaid transparently:
-
-```html
-<div class="select-control">
-  <sc-input class="select-input" id="fooDisplay" label="Foo" value="Default" trailing-icon="chevron-down"></sc-input>
-  <select id="fooSelect">...</select>
-</div>
-```
-
-```css
-.select-control { position: relative; }
-.select-control select { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 1; }
-```
-
-**Toggle controls** — `<sc-toggle>` in a `.toggle-row` flex row with a plain `<label>`.
-
-### Init pattern
-
-After the element is defined, disable help text on all sidebar inputs:
-
-```js
-customElements.whenDefined('sc-input').then(() => {
-  document.querySelectorAll('.sidebar sc-input').forEach(el => {
-    el.showHelpText = false
-  })
-})
-```
-
-### Event handlers
-
-- **sc-input text**: `e.detail.value` — guard with `if (!e.detail) return` (native events also bubble)
-- **sc-input select display**: sync from the native `<select>` `change` event via `e.target.options[e.target.selectedIndex].text`
-- **sc-toggle**: `e.detail.checked`
-
-### Theme toggle
-
-Segmented button style. Inactive buttons: `color: var(--sc-color-text-tertiary)`. Active: `color: var(--sc-color-text-primary)`.
-
-## Header background
-
-Use a separate `.header-bg` child element — never put `opacity` on the host or header itself or all content will disappear. The background always extends below the header's bottom edge via a negative `bottom` value to cover sticky controls beneath it.
-
-```css
-.header-bg {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  bottom: -96px; /* extends 96px below header bottom */
-  z-index: -1;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent) 0%,
-    transparent 100%
-  );
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
-  pointer-events: none;
-}
-```
-
-## Animated pill toggle (sliding thumb)
-
-Two explicit buttons are industry best practice over a single toggle hit region — direct state selection, better accessibility. Thumb uses absolute position + `transform: translateX()` transition; buttons sit above via `z-index: 1`.
-
-```css
-.theme-toggle {
-  position: relative; display: flex; align-items: center;
-  border-radius: 999px; padding: 3px;
-  /* glass effect applied via sc-header::part(theme-toggle) from external CSS */
-}
-.theme-toggle-thumb {
-  position: absolute; left: 3px; width: 28px; height: 28px;
-  border-radius: 50%; background: var(--sc-color-surface-l4);
-  box-shadow: var(--sc-shadow-l1);
-  transition: transform 250ms ease; pointer-events: none;
-}
-.theme-toggle-thumb.dark { transform: translateX(28px); }
-.theme-toggle button {
-  position: relative; z-index: 1; width: 28px; height: 28px;
-  border: none; border-radius: 50%; background: transparent; cursor: pointer;
-  color: var(--sc-color-icon-subtle); transition: color 150ms ease;
-}
-.theme-toggle button.active { color: var(--sc-color-icon-primary); }
-```
-
-Expose the toggle container as a CSS part so external styles can apply glass effect:
-
-```ts
-html`<div class="theme-toggle" part="theme-toggle" ...>`
-```
-
-Then in the external SCSS:
-
-```css
-sc-header::part(theme-toggle) {
-  background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-```
-
-## Glass effect utility
-
-A `.sc-glass` utility class is defined in `main.scss` for frosted-glass surfaces. Use it on regular (non-shadow DOM) elements. For shadow DOM elements, use `::part()` with the same values.
-
-```css
-.sc-glass {
-  background: color-mix(in srgb, var(--sc-color-background-neutral) 64%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-```
-
-## Sticky platform switch
-
-The platform switch uses pure CSS sticky — no JS needed, no snap. Set `top` to the desired visual gap from the viewport edge (acts as both the sticky threshold and the visual offset). Use `pointer-events: none` on the section container and restore it on the switch itself so the transparent area doesn't block header controls.
-
-```css
-.platform-switch-section {
-  position: sticky;
-  top: 12px; /* desktop: gap from viewport top when stuck */
-  z-index: 101; /* above header z-index: 100 */
-  pointer-events: none;
-}
-.platform-switch-section .platform-switch {
-  pointer-events: auto;
-}
-@media (max-width: 402px) {
-  .platform-switch-section {
-    top: 48px; /* mobile: clears the fixed header height */
-  }
-  .platform-switch {
-    width: 100%;
-  }
-  .platform-switch button {
-    flex: 1;
-  }
-}
-```
-
-## Theme-reactive image swap
-
-Use a single `<img>` element and swap `src` based on `_theme`. Same element = identical sizing, `object-fit`, and `object-position` guaranteed. No stacking, no overlay, no specificity issues.
-
-### Image focal point for bento cards
-
-Always use `object-position: left top` (the `sc-card-image` default) for bento card images. This anchors to the top-left, preventing content from being cropped off the top when the card is shorter than the image's natural height.
-
-Override the horizontal offset per-card with the `--sc-card-object-position` custom property:
-
-```html
-<sc-card-image style="--sc-card-object-position: -16px top">
-```
-
-Override `object-fit` per-card with `--sc-card-object-fit` (defaults to `cover`):
-
-```html
-<sc-card-image style="--sc-card-object-fit: contain">
-```
-
-The breakpoint reset at `≤810px` also applies `left top`, keeping the crop consistent across all screen sizes.
-
-### Section feature images
-
-`sc-section-feature` uses `aspect-ratio` and `height: auto` on the image so it renders at its natural ratio — no clipping. The `.image-wrap` is a flex container to centre the image vertically.
-
-```css
-.image-wrap {
-  flex: 1;
-  min-width: 370px;
-  aspect-ratio: 38 / 35; /* matches 1824×1680px source images */
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.image-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-```
-
-Use `aspect-ratio` that exactly matches the source image dimensions to avoid any clipping. For 1824×1680px: GCD is 48, so `38 / 35`. CSS `aspect-ratio` accepts decimal values if needed (e.g. `6 / 5.2`).
-
-```ts
-// In render():
-const src = this.imageSrcDark && this._theme === 'dark' ? this.imageSrcDark : this.imageSrc
-// html`<img src=${src} alt=${this.imageAlt} />`
-```
-
-Listen for `theme-change` events dispatched by `sc-header`:
-
-```ts
-private _onThemeChange = (e: Event) => {
-  this._theme = (e as CustomEvent).detail.theme
-}
-connectedCallback() {
-  super.connectedCallback()
-  this._theme = (document.documentElement.dataset.theme as 'light' | 'dark') ?? 'light'
-  window.addEventListener('theme-change', this._onThemeChange)
-}
-disconnectedCallback() {
-  super.disconnectedCallback()
-  window.removeEventListener('theme-change', this._onThemeChange)
-}
-```
-
-## Image file naming conventions
-
-All static images live in `site/public/images/` organised by platform:
-
-| Folder | Pattern | Usage |
-|---|---|---|
-| `images/framer/` | `sc-image-framer-{section}-{variant}-{theme}.png` | Framer bento + feature images |
-| `images/figma/` | `sc-image-figma-{section}-{variant}-{theme}.png` | Figma bento + feature images |
-
-Bento cards use `-light` / `-dark` pairs. Framer feature section images are light-only (no dark variant). Always use `image-src` + `image-src-dark` attributes on `sc-card-image` and `sc-section-feature` — never inline `src` on `<img>` tags.
-
-## Platform switch default
-
-The platform switch defaults to **Framer** (active button + active content panel). When updating JS that manages the platform switch state, ensure Framer starts as active:
-
-```js
-// Active button gets type="secondary", inactive gets type="tertiary"
-framerBtn.setAttribute('type', 'secondary')
-figmaBtn.setAttribute('type', 'tertiary')
-```
-
-## `color-mix()` for opacity without new tokens
-
-```css
-background: color-mix(in srgb, var(--sc-color-surface-l3) 80%, transparent);
-```
-
-Note: using `transparent` as the mix target can produce black-tinged gradients. For fade-to-transparent gradients, use CSS relative color syntax instead:
-
-```css
-rgb(from var(--sc-color-surface-l0) r g b / 0)
-```
-
-## Vite config ESM gotcha
-
-`package.json` has `"type": "module"` so `__dirname` doesn't exist in `vite.config.ts`. Use:
-
-```ts
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-const __dirname = dirname(fileURLToPath(import.meta.url))
-```
-
-## Breakpoints
-
-Two breakpoints used consistently across all section and layout components:
-
-| Breakpoint | Value | Usage |
-|---|---|---|
-| Tablet | `max-width: 810px` | Multi-column → single column, form/card stacking |
-| Mobile | `max-width: 402px` | Full-width buttons, text left-align, reduced padding |
-
-## Spacing tokens
-
-All padding, margin, and gap values use `--sc-space-*` tokens. Never use raw `px` for spacing (exceptions: `3px` toggle padding, `20px` header mobile padding, border widths, dimensions).
+### Spacing
 
 | Token | Value |
 |---|---|
@@ -366,74 +127,9 @@ All padding, margin, and gap values use `--sc-space-*` tokens. Never use raw `px
 | `--sc-space-5xl` | 80px |
 | `--sc-space-8xl` | 128px |
 
-## Mobile layout patterns
+### Breakpoints
 
-### Stacking flex rows
-
-```css
-@media (max-width: 402px) {
-  .container {
-    flex-direction: column;
-  }
-}
-```
-
-### Full-width buttons in stacked actions
-
-```css
-@media (max-width: 402px) {
-  .actions {
-    flex-direction: column;
-  }
-  .actions sc-button {
-    --sc-button-width: 100%;
-  }
-}
-```
-
-### Full-width slotted inputs and buttons
-
-```css
-@media (max-width: 402px) {
-  .form {
-    flex-direction: column;
-  }
-  .form ::slotted([slot='input']),
-  .form ::slotted([slot='action']) {
-    width: 100%;
-  }
-}
-```
-
-### Preventing flex children from over-stretching
-
-When a flex container has a min-height or the parent is `flex: 1`, empty slot children can grow to fill the space, showing as a large gap. Fix with `flex: none` on mobile:
-
-```css
-@media (max-width: 402px) {
-  .content {
-    flex: none;  /* sizes to natural height only */
-  }
-}
-```
-
-### Left-aligning section text on mobile
-
-```css
-@media (max-width: 402px) {
-  .container {
-    text-align: left;
-    align-items: flex-start;
-  }
-}
-```
-
-## Gotchas
-
-**Token quirks**
-- `--sc-border-width-s` resolves to 0 — use `1px` directly.
-- `--sc-color-background-primary` goes dark in dark mode — never use for knobs/thumbs that need to stay light. Use `--sc-color-surface-l1` instead.
-
-**Lit Boolean properties**
-- `@property({ type: Boolean, reflect: true })` uses attribute *presence*, not value. `show-label="false"` sets it to `true` (attribute present). To set to `false`, omit the attribute and use the JS init pattern.
-- `<sc-toggle checked>` = true (present). Absence = false.
+| Name | Value | Behaviour |
+|---|---|---|
+| Tablet | `max-width: 810px` | Multi-column → single column, stacking |
+| Mobile | `max-width: 402px` | Full-width buttons/inputs, text left-aligned, reduced padding |

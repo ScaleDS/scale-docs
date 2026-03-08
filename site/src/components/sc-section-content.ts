@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit'
-import { customElement } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
 
 @customElement('sc-section-content')
 export class ScSectionContent extends LitElement {
+  @property({ reflect: true }) align: 'center' | 'left' = 'center'
 
   static styles = css`
     *, *::before, *::after {
@@ -26,6 +27,11 @@ export class ScSectionContent extends LitElement {
       align-items: center;
       gap: var(--sc-space-l);
       text-align: center;
+    }
+
+    :host([align='left']) .container {
+      align-items: flex-start;
+      text-align: left;
     }
 
     @media (max-width: 402px) {

@@ -8,9 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <script type="module" src="/src/main.ts"></script>
-    <style>
-      body { opacity: 0; transition: opacity 250ms ease; }
-    </style>
+    <script type="module" src="/src/index.js"></script>
+    <style>body { opacity: 0; transition: opacity 250ms ease; }</style>
   </head>
   <body>
 
@@ -19,6 +18,7 @@
     <!-- ============================================================ -->
     <sc-header
       primary-label="Buy now"
+      primary-href="https://christopherdeane.gumroad.com/l/scale"
     ></sc-header>
 
     <!-- ============================================================ -->
@@ -28,8 +28,10 @@
       badge="3.1"
       primary-label="Preview in Framer"
       primary-leading-icon="framer"
+      primary-href="https://scaleframer.framer.website/"
       secondary-label="Preview in Figma"
       secondary-leading-icon="figma"
+      secondary-href="https://www.figma.com/design/BDgzx7fkrNoRK87uZX6sFw/Scale.Design-System--3.1.0-?node-id=0-1&t=JkDtMRXKS1nmeIeh-1"
       image-src="/images/hero/Scale - Framer - Hero - Light.jpg"
       image-src-dark="/images/hero/Scale - Framer - Hero - Dark.jpg"
       image-alt="Scale design system preview"
@@ -251,7 +253,9 @@
           <sc-row trailing-icon="check">Page templates</sc-row>
           <sc-row trailing-icon="check">Light and dark mode</sc-row>
           <sc-row>Currency: USD</sc-row>
-          <sc-button slot="actions" type="secondary">Buy Now</sc-button>
+          <a slot="actions" href="https://christopherdeane.gumroad.com/l/scale" target="_blank" rel="noopener noreferrer">
+            <sc-button type="secondary">Buy Now</sc-button>
+          </a>
         </sc-card-pricing>
 
         <sc-card-pricing slot="card-2">
@@ -267,7 +271,9 @@
           <sc-row trailing-icon="check">Page templates</sc-row>
           <sc-row trailing-icon="check">Light and dark mode</sc-row>
           <sc-row>Currency: USD</sc-row>
-          <sc-button slot="actions" type="secondary">Buy Now</sc-button>
+          <a slot="actions" href="https://christopherdeane.gumroad.com/l/scale" target="_blank" rel="noopener noreferrer">
+            <sc-button type="secondary">Buy Now</sc-button>
+          </a>
         </sc-card-pricing>
 
         <sc-card-pricing slot="card-3">
@@ -283,7 +289,9 @@
           <sc-row trailing-icon="check">Page templates</sc-row>
           <sc-row trailing-icon="check">Light and dark mode</sc-row>
           <sc-row>Currency: USD</sc-row>
-          <sc-button slot="actions" type="primary">Buy Now</sc-button>
+          <a slot="actions" href="https://christopherdeane.gumroad.com/l/scale" target="_blank" rel="noopener noreferrer">
+            <sc-button type="primary">Buy Now</sc-button>
+          </a>
         </sc-card-pricing>
 
     </sc-section-pricing>
@@ -314,7 +322,7 @@
     <sc-section-signup id="signup">
         <span slot="heading">Sign up for updates</span>
         <span slot="subtext">Stay up to date with releases and other related Scale news.</span>
-        <sc-input slot="input" id="signupEmail" label="Email address" placeholder="you@example.com"></sc-input>
+        <sc-input slot="input" id="signupEmail" label="Email address" placeholder="you@example.com" type="email" required></sc-input>
         <sc-button slot="action" type="primary">Subscribe</sc-button>
       </sc-section-signup>
 
@@ -324,57 +332,9 @@
     <sc-footer
       copyright="©2020 - 2026 Christopher Deane. All rights reserved."
       licence-label="Licence Agreement"
-      licence-href="#"
+      licence-href="/licence-agreement.html"
     ></sc-footer>
 
-    <script>
-      // Extend header gradient when platform switch becomes sticky
-      const header = document.querySelector('sc-header')
-      const sentinel = document.getElementById('platform-switch-sentinel')
-      const stickyObserver = new IntersectionObserver(
-        ([entry]) => { header.toggleAttribute('bg-extended', !entry.isIntersecting) },
-        { threshold: 0, rootMargin: '0px' }
-      )
-      stickyObserver.observe(sentinel)
-
-      // Platform switch
-      const platformBtns = document.querySelectorAll('.platform-switch sc-button')
-      const framerContent = document.getElementById('content-framer')
-      const figmaContent = document.getElementById('content-figma')
-
-      platformBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          platformBtns.forEach(b => b.setAttribute('type', 'tertiary'))
-          btn.setAttribute('type', 'secondary')
-          if (btn.dataset.platform === 'framer') {
-            framerContent.classList.add('active')
-            figmaContent.classList.remove('active')
-          } else {
-            figmaContent.classList.add('active')
-            framerContent.classList.remove('active')
-          }
-        })
-      })
-
-      // Hide help text on signup input
-      customElements.whenDefined('sc-input').then(() => {
-        document.querySelectorAll('sc-section-signup sc-input').forEach(el => {
-          el.showHelpText = false
-          el.showLabel = false
-        })
-      })
-
-      // Reveal page once all components are defined
-      Promise.all([
-        'sc-header', 'sc-hero', 'sc-section-content', 'sc-section-bento',
-        'sc-section-feature', 'sc-section-pricing', 'sc-section-faq',
-        'sc-section-signup', 'sc-card-image', 'sc-card-pricing',
-        'sc-badge', 'sc-row', 'sc-button', 'sc-accordion',
-        'sc-input', 'sc-footer',
-      ].map(n => customElements.whenDefined(n))).then(() => {
-        document.body.style.opacity = '1'
-      })
-    </script>
 
   </body>
 </html>

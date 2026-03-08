@@ -17,6 +17,8 @@ export class ScInput extends LitElement {
   @property({ type: Boolean, attribute: 'show-help-text', reflect: true }) showHelpText = true
   @property({ attribute: 'leading-icon' }) leadingIcon = ''
   @property({ attribute: 'trailing-icon' }) trailingIcon = ''
+  @property() type = 'text'
+  @property({ type: Boolean, reflect: true }) required = false
 
   static styles = css`
     :host {
@@ -46,29 +48,28 @@ export class ScInput extends LitElement {
       display: flex;
       align-items: center;
       gap: var(--sc-space-s);
-      padding: var(--sc-space-m) var(--sc-space-l);
+      padding: calc(var(--sc-space-m) - 1px) var(--sc-space-l);
       border-radius: var(--sc-border-radius-m);
       border: 1px solid var(--sc-color-border-primary);
       background: var(--sc-color-background-primary);
-      transition: border-color 150ms ease, border-width 150ms ease, padding 150ms ease;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
       width: 100%;
       box-sizing: border-box;
     }
 
-    /* 2px border states — compensate with -1px padding to avoid layout shift */
     .field:focus-within {
-      border: 2px solid var(--sc-color-border-selected);
-      padding: calc(var(--sc-space-m) - 1px) calc(var(--sc-space-l) - 1px);
+      border-color: var(--sc-color-border-selected);
+      box-shadow: 0 0 0 1px var(--sc-color-border-selected);
     }
 
     :host([state='negative']) .field {
-      border: 2px solid var(--sc-color-border-negative);
-      padding: calc(var(--sc-space-m) - 1px) calc(var(--sc-space-l) - 1px);
+      border-color: var(--sc-color-border-negative);
+      box-shadow: 0 0 0 1px var(--sc-color-border-negative);
     }
 
     :host([state='positive']) .field {
-      border: 2px solid var(--sc-color-border-positive);
-      padding: calc(var(--sc-space-m) - 1px) calc(var(--sc-space-l) - 1px);
+      border-color: var(--sc-color-border-positive);
+      box-shadow: 0 0 0 1px var(--sc-color-border-positive);
     }
 
     :host([state='disabled']) .field {
@@ -127,6 +128,10 @@ export class ScInput extends LitElement {
     }
   `
 
+  reportValidity(): boolean {
+    return (this.shadowRoot!.querySelector('input') as HTMLInputElement).reportValidity()
+  }
+
   private _onInput(e: Event) {
     this.value = (e.target as HTMLInputElement).value
     this.dispatchEvent(new CustomEvent('input', { detail: { value: this.value }, bubbles: true, composed: true }))
@@ -163,6 +168,8 @@ export class ScInput extends LitElement {
           .value=${this.value}
           placeholder=${this.placeholder}
           ?disabled=${disabled}
+          ?required=${this.required}
+          type=${this.type}
           @input=${this._onInput}
           @change=${this._onChange}
         />
