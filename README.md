@@ -54,7 +54,7 @@ Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Ope
 | `sc-toggle` | `/components/sc-toggle.html` |
 | `sc-badge` | `/components/sc-badge.html` |
 | `sc-accordion` | `/components/sc-accordion.html` |
-| `sc-button-icon`, `sc-button-pill`, `sc-logo`, `sc-divider` | *(no standalone preview)* |
+| `sc-button-icon`, `sc-button-pill`, `sc-logo`, `sc-divider` |
 
 ### Layout & sections
 
@@ -89,4 +89,3 @@ Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Ope
 - **TypeScript** — component authoring
 - **SCSS** — design token definitions
 - **MailerLite** — email signup via REST API
-- **Google Analytics** — GA4 (G-SBTLFNGKX7)
