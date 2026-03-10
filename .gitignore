@@ -1,9 +1,6 @@
 # Dependencies
 site/node_modules/
 
-# Build output
-site/dist/
-
 # macOS
 .DS_Store
 **/.DS_Store
