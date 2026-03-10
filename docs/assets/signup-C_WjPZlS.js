@@ -1317,7 +1317,7 @@
 
     @media (max-width: 402px) {
       :host {
-        height: 80vh;
+        height: 90vh;
       }
 
       .container {
