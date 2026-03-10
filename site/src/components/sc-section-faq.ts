@@ -21,7 +21,7 @@ export class ScSectionFaq extends LitElement {
     .container {
       width: 100%;
       max-width: 1168px;
-      padding: var(--sc-space-2xl) var(--sc-space-l);
+      padding: var(--sc-section-faq-padding-y, var(--sc-space-2xl)) var(--sc-space-l);
       display: flex;
       flex-wrap: wrap;
       gap: var(--sc-space-l) var(--sc-space-2xl);

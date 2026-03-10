@@ -162,6 +162,25 @@ sc-header::part(theme-toggle) {
   display: block;
 }
 
+.platform-content.fade-out {
+  display: block;
+  animation: platform-fade-out 100ms ease forwards;
+}
+
+.platform-content.fade-in {
+  animation: platform-fade-in 100ms ease forwards;
+}
+
+@keyframes platform-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes platform-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ---- Bento grid ---- */
 
 .bento {

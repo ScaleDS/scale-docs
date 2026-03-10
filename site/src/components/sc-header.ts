@@ -23,7 +23,6 @@ export class ScHeader extends LitElement {
   @property({ attribute: 'secondary-label' }) secondaryLabel = ''
   @property({ attribute: 'secondary-href' }) secondaryHref = ''
   @property({ type: Boolean, reflect: true, attribute: 'show-search' }) showSearch = false
-  @property({ type: Boolean, reflect: true, attribute: 'bg-extended' }) bgExtended = false
 
   @state() private _theme: 'light' | 'dark' = 'light'
   @state() private _mobile = false
@@ -77,18 +76,14 @@ export class ScHeader extends LitElement {
       transition: bottom 300ms ease;
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--sc-color-surface-l3) 90%, transparent) 0%,
+        color-mix(in srgb, var(--sc-color-surface-l3) 20%, transparent) 0%,
         transparent 100%
       );
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, black 16px, transparent 100%);
       pointer-events: none;
-    }
-
-    :host([bg-extended]) .header-bg {
-      bottom: -128px;
     }
 
     /* ---- Three-column grid for leading / nav / trailing ---- */

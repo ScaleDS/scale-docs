@@ -20,6 +20,8 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash
 | `site/src/licence-agreement.js` | Licence page script |
 | `site/src/signup.js` | Shared MailerLite subscribe logic — `setupSignup()` |
 | `site/public/images/` | Static images — reference as `/images/…` |
+| `site/public/images/favicon/` | `sc-favicon.png` (browser tab), `sc-app-icon.png` (iOS/Android) |
+| `site/public/images/og/` | `sc-image-og.png` — Open Graph share image |
 | `site/components/sc-*.html` | Component preview pages |
 
 Run: `cd site && npm run dev` — Build: `cd site && npm run build`
@@ -71,6 +73,34 @@ Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 
 **Page-specific styles**
 - Add `data-page="pagename"` on `<html>` and scope overrides in `main.scss` with `[data-page='pagename']`.
+
+**Page `<head>` structure**
+Every page should include in this order: Google Analytics, canonical link, Open Graph tags, Twitter/X tags, favicons, font preconnects, module scripts, inline FOUC style.
+- Favicon: `<link rel="icon" type="image/png" href="/images/favicon/sc-favicon.png" />`
+- Apple touch icon: `<link rel="apple-touch-icon" href="/images/favicon/sc-app-icon.png" />`
+- OG image: `https://www.scaledesignsystem.com/images/og/sc-image-og.png`
+- GA measurement ID: `G-SBTLFNGKX7`
+
+**Platform content fade transition**
+Use CSS `@keyframes` animations (not `transition`) for panels that switch between `display: none` and `display: block`. Add `display: block` via the `active` class, then trigger `fade-in` on a separate `requestAnimationFrame` to guarantee a repaint between display change and animation start:
+```js
+outgoing.classList.add('fade-out')
+outgoing.classList.remove('active')
+setTimeout(() => {
+  outgoing.classList.remove('fade-out')
+  incoming.classList.add('active')
+  requestAnimationFrame(() => {
+    incoming.classList.add('fade-in')
+    incoming.addEventListener('animationend', () => incoming.classList.remove('fade-in'), { once: true })
+  })
+}, 100)
+```
+
+**sc-header gradient**
+- Opacity: 20% (`color-mix(in srgb, var(--sc-color-surface-l3) 20%, transparent)`)
+- Blur: `24px`
+- `--sc-header-bg-bottom: 0px` set globally in `main.scss` — gradient does not extend below the header
+- `bg-extended` prop has been removed
 
 ---
 

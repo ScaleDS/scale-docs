@@ -167,11 +167,21 @@ pre {
   gap: var(--sc-space-xl);
 }
 
-/* ---- Licence page ---- */
+/* ---- Header ---- */
 
-[data-page='licence'] sc-header {
+sc-header {
   --sc-header-bg-bottom: 0px;
 }
+
+/* ---- FAQ section ---- */
+
+@media (min-width: 811px) {
+  sc-section-faq {
+    --sc-section-faq-padding-y: var(--sc-space-4xl);
+  }
+}
+
+/* ---- Licence page ---- */
 
 [data-page='licence'] section {
   padding-top: 160px;

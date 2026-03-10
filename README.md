@@ -41,6 +41,8 @@ Output goes to `site/dist/`.
 | Home / marketing | `site/index.html` |
 | Licence Agreement | `site/licence-agreement.html` |
 
+Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Open Graph + Twitter/X meta tags, favicons, and an inline FOUC-prevention style.
+
 ## Components
 
 ### UI
@@ -58,7 +60,7 @@ Output goes to `site/dist/`.
 
 | Component | Description |
 |---|---|
-| `sc-header` | Fixed header with frosted-glass background, animated theme toggle, mobile drawer |
+| `sc-header` | Fixed header with frosted-glass background (20% opacity, 24px blur), single-pill theme toggle, mobile drawer |
 | `sc-hero` | Full-width hero with badge, CTAs, theme-reactive image |
 | `sc-footer` | Footer with logo, copyright, and licence link |
 | `sc-row` | Horizontal layout row wrapper |
@@ -71,6 +73,15 @@ Output goes to `site/dist/`.
 | `sc-card-image` | Image card for bento and feature grids |
 | `sc-card-pricing` | Pricing tier card |
 
+## Static assets
+
+| Path | Contents |
+|---|---|
+| `site/public/images/favicon/` | `sc-favicon.png` (browser tab), `sc-app-icon.png` (iOS/Android home screen) |
+| `site/public/images/og/` | `sc-image-og.png` — Open Graph share image |
+| `site/public/images/framer/` | Framer bento + feature section images |
+| `site/public/images/figma/` | Figma bento + feature section images |
+
 ## Tech
 
 - **Vite** — dev server and build
@@ -78,3 +89,4 @@ Output goes to `site/dist/`.
 - **TypeScript** — component authoring
 - **SCSS** — design token definitions
 - **MailerLite** — email signup via REST API
+- **Google Analytics** — GA4 (G-SBTLFNGKX7)

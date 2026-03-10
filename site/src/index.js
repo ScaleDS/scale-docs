@@ -1,14 +1,5 @@
 import { setupSignup } from './signup.js'
 
-// Extend header gradient when platform switch becomes sticky
-const header = document.querySelector('sc-header')
-const sentinel = document.getElementById('platform-switch-sentinel')
-const stickyObserver = new IntersectionObserver(
-  ([entry]) => { header.toggleAttribute('bg-extended', !entry.isIntersecting) },
-  { threshold: 0, rootMargin: '0px' }
-)
-stickyObserver.observe(sentinel)
-
 // Platform switch
 const platformBtns = document.querySelectorAll('.platform-switch sc-button')
 const framerContent = document.getElementById('content-framer')
@@ -16,15 +7,23 @@ const figmaContent = document.getElementById('content-figma')
 
 platformBtns.forEach(btn => {
   btn.addEventListener('click', () => {
+    const incoming = btn.dataset.platform === 'framer' ? framerContent : figmaContent
+    const outgoing = btn.dataset.platform === 'framer' ? figmaContent : framerContent
+    if (incoming.classList.contains('active')) return
+
     platformBtns.forEach(b => b.setAttribute('type', 'tertiary'))
     btn.setAttribute('type', 'secondary')
-    if (btn.dataset.platform === 'framer') {
-      framerContent.classList.add('active')
-      figmaContent.classList.remove('active')
-    } else {
-      figmaContent.classList.add('active')
-      framerContent.classList.remove('active')
-    }
+
+    outgoing.classList.add('fade-out')
+    outgoing.classList.remove('active')
+    setTimeout(() => {
+      outgoing.classList.remove('fade-out')
+      incoming.classList.add('active')
+      requestAnimationFrame(() => {
+        incoming.classList.add('fade-in')
+        incoming.addEventListener('animationend', () => incoming.classList.remove('fade-in'), { once: true })
+      })
+    }, 100)
   })
 })
 
