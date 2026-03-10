@@ -47,4 +47,38 @@ Promise.all([
   'sc-input', 'sc-footer',
 ].map(n => customElements.whenDefined(n))).then(() => {
   document.body.style.opacity = '1'
+
+  // Preload off-screen images (opposite theme variants + Figma section)
+  const isDark = document.documentElement.dataset.theme === 'dark'
+  const alt = isDark ? 'light' : 'dark'
+  const preload = [
+    `images/hero/Scale - Framer - Hero - ${isDark ? 'Light' : 'Dark'}.jpg`,
+    `images/framer/sc-image-framer-bento-components-${alt}.png`,
+    `images/framer/sc-image-framer-bento-variables-${alt}.png`,
+    `images/framer/sc-image-framer-bento-icons-${alt}.png`,
+    `images/framer/sc-image-framer-bento-sections-${alt}.png`,
+    `images/framer/sc-image-framer-feature-variables-${alt}.png`,
+    `images/framer/sc-image-framer-feature-typography-${alt}.png`,
+    `images/framer/sc-image-framer-feature-components-${alt}.png`,
+    `images/framer/sc-image-framer-feature-sections-${alt}.png`,
+    `images/framer/sc-image-framer-feature-templates-${alt}.png`,
+    'images/figma/sc-image-figma-bento-components-light.png',
+    'images/figma/sc-image-figma-bento-components-dark.png',
+    'images/figma/sc-image-figma-bento-variables-light.png',
+    'images/figma/sc-image-figma-bento-variables-dark.png',
+    'images/figma/sc-image-figma-bento-icons-light.png',
+    'images/figma/sc-image-figma-bento-icons-dark.png',
+    'images/figma/sc-image-figma-bento-modules-light.png',
+    'images/figma/sc-image-figma-bento-modules-dark.png',
+    'images/figma/sc-image-figma-feature-liquid-glass-light.png',
+    'images/figma/sc-image-figma-feature-liquid-glass-dark.png',
+    'images/figma/sc-image-figma-feature-scp-plugin.png',
+    'images/figma/sc-image-figma-feature-color-variables.png',
+    'images/figma/sc-image-figma-feature-type-variables.png',
+    'images/figma/sc-image-figma-feature-components-light.png',
+    'images/figma/sc-image-figma-feature-components-dark.png',
+    'images/figma/sc-image-figma-feature-modules-light.png',
+    'images/figma/sc-image-figma-feature-modules-dark.png',
+  ]
+  preload.forEach(src => { new Image().src = src })
 })
