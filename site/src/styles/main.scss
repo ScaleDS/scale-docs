@@ -173,6 +173,12 @@ sc-header {
   --sc-header-bg-bottom: 0px;
 }
 
+/* ---- Hero h1 mobile size ---- */
+
+@media (max-width: 402px) {
+  sc-hero h1 { font-size: var(--sc-unit-32); line-height: var(--sc-unit-40); }
+}
+
 /* ---- FAQ section ---- */
 
 @media (min-width: 811px) {
