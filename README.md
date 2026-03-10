@@ -6,6 +6,7 @@ Marketing and documentation site for the **Scale** design system, built for Figm
 
 | Folder | Purpose |
 |---|---|
+| `docs/` | Build output — deployed to GitHub Pages |
 | `site/` | Vite + Lit + TypeScript site |
 | `site/src/components/` | Lit web components (`sc-button`, `sc-input`, etc.) |
 | `site/src/styles/` | SCSS design tokens (`--sc-*` CSS custom properties) |
@@ -32,7 +33,7 @@ cd site
 npm run build
 ```
 
-Output goes to `site/dist/`.
+Output goes to `docs/` in the repo root (configured in `site/vite.config.ts`).
 
 ## Pages
 
