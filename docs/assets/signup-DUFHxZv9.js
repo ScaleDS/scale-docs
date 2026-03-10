@@ -546,7 +546,7 @@
         <div class="header-bg"></div>
 
         <div class="leading">
-          <a class="logo-link" href="/">
+          <a class="logo-link" href="./">
             <sc-logo size="m" ?hide-text=${this._mobile}></sc-logo>
           </a>
         </div>
