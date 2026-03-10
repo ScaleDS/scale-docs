@@ -42,7 +42,7 @@ Output goes to `docs/` in the repo root (configured in `site/vite.config.ts`).
 | Home / marketing | `site/index.html` |
 | Licence Agreement | `site/licence-agreement.html` |
 
-Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Open Graph + Twitter/X meta tags, favicons, and an inline FOUC-prevention style.
+Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Open Graph + Twitter/X meta tags, favicons, an inline FOUC-prevention style, and an inline theme-initialisation script (reads `localStorage` → falls back to `prefers-color-scheme`).
 
 ## Components
 
@@ -61,7 +61,7 @@ Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Ope
 
 | Component | Description |
 |---|---|
-| `sc-header` | Fixed header with frosted-glass background (20% opacity, 24px blur), single-pill theme toggle, mobile drawer |
+| `sc-header` | Fixed header with frosted-glass background (20% opacity, 24px blur), single-pill theme toggle (persists choice to `localStorage`), mobile drawer |
 | `sc-hero` | Full-width hero with badge, CTAs, theme-reactive image |
 | `sc-footer` | Footer with logo, copyright, and licence link |
 | `sc-row` | Horizontal layout row wrapper |
@@ -82,6 +82,21 @@ Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Ope
 | `site/public/images/og/` | `sc-image-og.png` — Open Graph share image |
 | `site/public/images/framer/` | Framer bento + feature section images |
 | `site/public/images/figma/` | Figma bento + feature section images |
+
+## Theme persistence
+
+Theme preference is stored in `localStorage` under the key `sc-theme`. On every page load an inline script (before any CSS renders) reads this value and sets `data-theme` on `<html>`, preventing a flash of the wrong theme. If no preference is saved the system's `prefers-color-scheme` is used. Toggling the theme in the header writes the new value back to `localStorage`.
+
+## Image preloading
+
+Once all web components are defined and the page becomes visible, off-screen images are preloaded in the background using `new Image().src`:
+
+- Opposite-theme variants of all Framer feature and bento images (so light↔dark switching is instant)
+- All Figma section images in both themes (hidden behind the platform switch, preloaded regardless of which platform is active)
+
+## Deployment
+
+The site is deployed to GitHub Pages at `https://scaleds.github.io/scale-docs/`. Vite's `base: '/scale-docs/'` config handles JS/CSS asset paths; image paths in HTML attributes use relative paths (no leading `/`) so they resolve correctly under the subdirectory.
 
 ## Tech
 
