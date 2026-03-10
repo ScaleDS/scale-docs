@@ -143,7 +143,7 @@ export class ScHero extends LitElement {
 
     @media (max-width: 402px) {
       :host {
-        height: 90vh;
+        height: 92vh;
       }
 
       .container {
