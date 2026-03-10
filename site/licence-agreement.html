@@ -2,6 +2,13 @@
 <html lang="en" data-theme="light" data-page="licence">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var saved = localStorage.getItem('sc-theme')
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scale — Design System for Figma &amp; Framer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

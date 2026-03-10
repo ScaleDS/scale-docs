@@ -2,14 +2,21 @@
 <html lang="en" data-theme="light" data-page="licence">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var saved = localStorage.getItem('sc-theme')
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scale — Design System for Figma &amp; Framer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>body { opacity: 0; transition: opacity 250ms ease; }</style>
-    <script type="module" crossorigin src="/scale-docs/assets/licence-B2qW0SEq.js"></script>
-    <link rel="modulepreload" crossorigin href="/scale-docs/assets/signup-D0zqKzYo.js">
+    <script type="module" crossorigin src="/scale-docs/assets/licence-CBoqwFaH.js"></script>
+    <link rel="modulepreload" crossorigin href="/scale-docs/assets/signup-DsVSPtCr.js">
     <link rel="stylesheet" crossorigin href="/scale-docs/assets/signup-D4tD69kT.css">
   </head>
   <body>

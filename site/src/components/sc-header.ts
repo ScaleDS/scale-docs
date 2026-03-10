@@ -45,6 +45,7 @@ export class ScHeader extends LitElement {
   private _setTheme(theme: 'light' | 'dark') {
     this._theme = theme
     document.documentElement.dataset.theme = theme
+    localStorage.setItem('sc-theme', theme)
     this.dispatchEvent(new CustomEvent('theme-change', { detail: { theme }, bubbles: true, composed: true }))
   }
 

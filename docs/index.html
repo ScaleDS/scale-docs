@@ -2,6 +2,13 @@
 <html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var saved = localStorage.getItem('sc-theme')
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A Framer and Figma Design System that helps individuals and organisations Scale.</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBTLFNGKX7"></script>
@@ -33,8 +40,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>body { opacity: 0; transition: opacity 250ms ease; }</style>
-    <script type="module" crossorigin src="/scale-docs/assets/main-D0cDjLRL.js"></script>
-    <link rel="modulepreload" crossorigin href="/scale-docs/assets/signup-D0zqKzYo.js">
+    <script type="module" crossorigin src="/scale-docs/assets/main-_6HSNlny.js"></script>
+    <link rel="modulepreload" crossorigin href="/scale-docs/assets/signup-DsVSPtCr.js">
     <link rel="stylesheet" crossorigin href="/scale-docs/assets/signup-D4tD69kT.css">
   </head>
   <body>
