@@ -10,7 +10,7 @@ A Design System that helps individuals and organisations Scale.
 
 09/03/26: Scale for Framer is here!
 
-Now you can buy a licence for Figma, Framer or get both at a bundled price.
+Now you can buy a license for Figma, Framer or get both at a bundled price.
 
 ## Features
 
