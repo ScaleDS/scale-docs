@@ -75,11 +75,10 @@ Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 - Add `data-page="pagename"` on `<html>` and scope overrides in `main.scss` with `[data-page='pagename']`.
 
 **Page `<head>` structure**
-Every page should include in this order: Google Analytics, canonical link, Open Graph tags, Twitter/X tags, favicons, font preconnects, module scripts, inline FOUC style.
+Every page should include in this order: canonical link, Open Graph tags, Twitter/X tags, favicons, font preconnects, module scripts, inline FOUC style.
 - Favicon: `<link rel="icon" type="image/png" href="/images/favicon/sc-favicon.png" />`
 - Apple touch icon: `<link rel="apple-touch-icon" href="/images/favicon/sc-app-icon.png" />`
 - OG image: `https://www.scaledesignsystem.com/images/og/sc-image-og.png`
-- GA measurement ID: `G-SBTLFNGKX7`
 
 **Platform content fade transition**
 Use CSS `@keyframes` animations (not `transition`) for panels that switch between `display: none` and `display: block`. Add `display: block` via the `active` class, then trigger `fade-in` on a separate `requestAnimationFrame` to guarantee a repaint between display change and animation start:

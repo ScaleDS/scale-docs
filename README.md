@@ -42,7 +42,7 @@ Output goes to `docs/` in the repo root (configured in `site/vite.config.ts`).
 | Home / marketing | `site/index.html` |
 | Licence Agreement | `site/licence-agreement.html` |
 
-Each page `<head>` includes: Google Analytics (G-SBTLFNGKX7), canonical URL, Open Graph + Twitter/X meta tags, favicons, an inline FOUC-prevention style, and an inline theme-initialisation script (reads `localStorage` → falls back to `prefers-color-scheme`).
+Each page `<head>` includes: canonical URL, Open Graph + Twitter/X meta tags, favicons, an inline FOUC-prevention style, and an inline theme-initialisation script (reads `localStorage` → falls back to `prefers-color-scheme`).
 
 ## Components
 

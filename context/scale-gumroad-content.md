@@ -92,8 +92,3 @@ http://www.scaledesignsystem.com/
 
 ### Questions
 info@scaledesignsystem.com
-
----
-
-Remix link:
-https://framer.com/projects/new?duplicate=4twKyhG02VwUwUQOjsPO
