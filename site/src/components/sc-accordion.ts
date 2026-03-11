@@ -62,11 +62,15 @@ export class ScAccordion extends LitElement {
 
     :host([open]) .body {
       grid-template-rows: 1fr;
-      padding: var(--sc-space-s) 0 var(--sc-space-s) var(--sc-space-l);
+    }
+
+    .body-inner {
+      overflow: hidden;
+      min-height: 0;
     }
 
     p {
-      overflow: hidden;
+      padding: var(--sc-space-s) 0 var(--sc-space-s) var(--sc-space-l);
       font-family: var(--sc-type-family-inter), system-ui, sans-serif;
       font-size: var(--sc-type-size-l);
       line-height: var(--sc-type-line-height-l);
@@ -130,9 +134,9 @@ export class ScAccordion extends LitElement {
         </span>
       </button>
       <div class="body" id=${contentId} role="region" aria-labelledby=${headerId}>
-        <p>
-          <slot></slot>
-        </p>
+        <div class="body-inner">
+          <p><slot></slot></p>
+        </div>
       </div>
       <sc-divider variant="subtle"></sc-divider>
     `

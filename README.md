@@ -11,7 +11,6 @@ Marketing and documentation site for the **Scale** design system, built for Figm
 | `site/src/components/` | Lit web components (`sc-button`, `sc-input`, etc.) |
 | `site/src/styles/` | SCSS design tokens (`--sc-*` CSS custom properties) |
 | `site/public/` | Static assets served at root URL |
-| `site/components/` | Interactive component preview pages |
 | `site-md/` | Markdown reference for foundations and design decisions |
 | `context/` | AI builder context and skill files |
 | `pencil/` | Pencil design files (`.pen`) |
@@ -48,14 +47,9 @@ Each page `<head>` includes: canonical URL, Open Graph + Twitter/X meta tags, fa
 
 ### UI
 
-| Component | Preview |
-|---|---|
-| `sc-button` | `/components/sc-button.html` |
-| `sc-input` | `/components/sc-input.html` |
-| `sc-toggle` | `/components/sc-toggle.html` |
-| `sc-badge` | `/components/sc-badge.html` |
-| `sc-accordion` | `/components/sc-accordion.html` |
-| `sc-button-icon`, `sc-button-pill`, `sc-logo`, `sc-divider` |
+`sc-button`, `sc-input`, `sc-toggle`, `sc-badge`, `sc-accordion`, `sc-button-icon`, `sc-button-pill`, `sc-logo`, `sc-divider`
+
+> Component preview pages have been removed. Storybook will replace them.
 
 ### Layout & sections
 
@@ -96,7 +90,7 @@ Once all web components are defined and the page becomes visible, off-screen ima
 
 ## Deployment
 
-The site is deployed to GitHub Pages at `https://scaleds.github.io/scale-docs/`. Vite's `base: '/scale-docs/'` config handles JS/CSS asset paths; image paths in HTML attributes use relative paths (no leading `/`) so they resolve correctly under the subdirectory.
+The site is deployed to GitHub Pages with a custom domain at `https://scaledesignsystem.com`. Vite's `base: '/'` config is used since the site serves from the domain root. The `CNAME` file lives in `site/public/` so Vite copies it to `docs/` on every build — without this it gets deleted by `emptyOutDir: true` and the custom domain breaks.
 
 ## Tech
 
