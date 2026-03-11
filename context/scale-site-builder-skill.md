@@ -22,7 +22,6 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash
 | `site/public/images/` | Static images — reference as `/images/…` |
 | `site/public/images/favicon/` | `sc-favicon.png` (browser tab), `sc-app-icon.png` (iOS/Android) |
 | `site/public/images/og/` | `sc-image-og.png` — Open Graph share image |
-| `site/components/sc-*.html` | Component preview pages |
 
 Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 
@@ -62,6 +61,10 @@ Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 **FOUC prevention**
 - `body { opacity: 0; transition: opacity 250ms ease; }` must be an inline `<style>` in each HTML page's `<head>` — not in `main.scss`. Reveal with `document.body.style.opacity = '1'` only after all custom elements on the page are defined.
 
+**Theme persistence**
+- Each page `<head>` must include an inline script (before any CSS) that reads `localStorage.getItem('sc-theme')`, falls back to `window.matchMedia('(prefers-color-scheme: dark)').matches`, and sets `document.documentElement.dataset.theme`. This prevents flash of wrong theme on hard refresh.
+- `sc-header._setTheme()` writes the chosen theme to `localStorage.setItem('sc-theme', theme)` on every toggle.
+
 **Images**
 - Never put images in `site/src/assets/` for HTML attribute use — always `site/public/images/`.
 - Naming: `sc-image-{platform}-{section}-{variant}-{theme}.png`
@@ -75,10 +78,19 @@ Run: `cd site && npm run dev` — Build: `cd site && npm run build`
 - Add `data-page="pagename"` on `<html>` and scope overrides in `main.scss` with `[data-page='pagename']`.
 
 **Page `<head>` structure**
-Every page should include in this order: canonical link, Open Graph tags, Twitter/X tags, favicons, font preconnects, module scripts, inline FOUC style.
+Every page should include in this order: inline theme-init script, canonical link, Open Graph tags, Twitter/X tags, favicons, font preconnects, module scripts, inline FOUC style.
 - Favicon: `<link rel="icon" type="image/png" href="/images/favicon/sc-favicon.png" />`
 - Apple touch icon: `<link rel="apple-touch-icon" href="/images/favicon/sc-app-icon.png" />`
 - OG image: `https://www.scaledesignsystem.com/images/og/sc-image-og.png`
+
+**Deployment / CNAME**
+- Site is deployed at `https://scaledesignsystem.com`. Vite `base` is `/`.
+- `site/public/CNAME` contains `scaledesignsystem.com` — Vite copies it to `docs/` on every build. Do not remove it; `emptyOutDir: true` deletes `docs/` contents on each build including any manually placed `CNAME`.
+
+**Accordion expand/collapse animation**
+- Use `display: grid; grid-template-rows: 0fr / 1fr` on the outer `.body` element for smooth height animation.
+- The direct child of `.body` must have `overflow: hidden; min-height: 0` (a `.body-inner` wrapper div).
+- Place all padding on the inner content element (`p` or similar), not on `.body`. Putting padding on `.body` only in the open state causes it to snap instantly — it must always be present and let the grid clipping do the hiding.
 
 **Platform content fade transition**
 Use CSS `@keyframes` animations (not `transition`) for panels that switch between `display: none` and `display: block`. Add `display: block` via the `active` class, then trigger `fade-in` on a separate `requestAnimationFrame` to guarantee a repaint between display change and animation start:
@@ -110,7 +122,6 @@ setTimeout(() => {
 1. Read Figma component for anatomy, variants, props, token values.
 2. Create `site/src/components/sc-{name}.ts` with `@customElement`, `@property`, `static styles`, `render()`, and `declare global` block.
 3. Register in `site/src/main.ts`: `import './components/sc-{name}'`
-4. Create preview at `site/components/sc-{name}.html`.
 
 ### Add a new page
 
