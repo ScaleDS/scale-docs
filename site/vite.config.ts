@@ -5,7 +5,7 @@ import { dirname, resolve } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  base: '/scale-docs/',
+  base: '/',
   build: {
     outDir: resolve(__dirname, '../docs'),
     emptyOutDir: true,
