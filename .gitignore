@@ -1,9 +1,5 @@
 # Dependencies
 site/node_modules/
-context
-pencil
-site
-site-md
 .claude
 
 # macOS
