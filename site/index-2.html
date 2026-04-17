@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Flying Bird</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #87ceeb; /* Sky blue background */
+            overflow: hidden;
+        }
+
+        /* Keyframe animation for the bird's horizontal movement across the screen */
+        @keyframes fly {
+            from {
+                transform: translateX(-100vw) translateY(0);
+                opacity: 0.5;
+            }
+            to {
+                transform: translateX(120vw) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        #bird-container {
+            /* This container holds the SVG and defines the path for movement */
+            position: absolute;
+            top: 15%; /* Position vertically in the "sky" */
+            width: 200vw; /* Needs to be wide enough to move across the viewport */
+        }
+
+        #bird-svg {
+            /* The SVG element itself */
+            display: block;
+            transform-origin: center center;
+            animation: fly linear infinite; /* Apply the animation */
+            animation-duration: 15s; /* How long one cycle takes */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The container helps manage the movement scope -->
+    <div id="bird-container">
+        <svg id="bird-svg" viewBox="0 0 300 150" width="600" height="150">
+            
+            <!-- Simplified Bird Shape (Using a group for easier rotation/scaling) -->
+            <g id="bird">
+                <!-- Body -->
+                <path d="M 50 70 Q 80 50, 130 60 L 125 90 Q 85 110, 40 100 Z" fill="#ff9800" stroke="#e65100" stroke-width="2"/>
+                <!-- Wing (This will be the main element that rotates) -->
+                <path id="wing" d="M 70 75 C 90 50, 140 65, 110 85 Z" fill="#ffb74d" stroke="#e65100" stroke-width="2"/>
+                <!-- Beak -->
+                <circle cx="30" cy="75" r="15" fill="#fbc02d"/>
+            </g>
+        </svg>
+    </div>
+
+</body>
+</html>
